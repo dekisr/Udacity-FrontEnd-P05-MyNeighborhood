@@ -4,7 +4,11 @@ import Map from './Map'
 
 class App extends Component {
   state = {
-    markers: []
+    markers: [],
+    icons: {
+      defaultIcon: 'https://maps.google.com/mapfiles/kml/shapes/parking_lot_maps.png',
+      mouseOverIcon: 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png'
+    }
   }
   componentWillMount() {
     this.testFetch()
@@ -20,7 +24,8 @@ class App extends Component {
           const lng = item[4];
           return markers.push({
             lat: lat,
-            lng: lng
+            lng: lng,
+            icon: this.state.icons.defaultIcon
           })
         })
         return markers
@@ -31,10 +36,25 @@ class App extends Component {
         })
       }).catch(err => console.log(err))
   }
+  mouseOverIcon = (index) => {
+    let markers = this.state.markers
+    markers[index].icon = this.state.icons.mouseOverIcon
+    this.setState({ markers })
+  }
+  mouseOutIcon = (index) => {
+    let markers = this.state.markers
+    markers[index].icon = this.state.icons.defaultIcon
+    this.setState({ markers })
+  }
   render() {
     return (
       <div className="App">
-        <Map markers={this.state.markers} />
+        <Map
+          markers={this.state.markers}
+          markersDefaultIcons={this.state.icons.defaultIcon}
+          mouseOverIcon={this.mouseOverIcon}
+          mouseOutIcon={this.mouseOutIcon}
+        />
       </div>
     );
   }
