@@ -1,19 +1,11 @@
 import React from 'react';
-import { withScriptjs, withGoogleMap, GoogleMap, Marker } from "react-google-maps"
+import { withScriptjs, withGoogleMap, GoogleMap } from "react-google-maps"
+import Markers from './Markers';
 
 const ReactGoogleMaps = withScriptjs(withGoogleMap((props) => {
-  const markers = props.markers.map((marker, index) => (
-    <Marker
-      key={index}
-      position={{ lat: marker.lat, lng: marker.lng }}
-      icon={marker.icon}
-      onMouseOver={() => props.mouseOverIcon(index)}
-      onMouseOut={() => props.mouseOutIcon(index)}
-    />
-  ))
   return (
     <GoogleMap
-      defaultZoom={2}
+      defaultZoom={1}
       defaultCenter={{ lat: -30.12345, lng: -40.12345 }}
       defaultOptions={{
         disableDefaultUI: true,
@@ -21,7 +13,13 @@ const ReactGoogleMaps = withScriptjs(withGoogleMap((props) => {
       }}
       ref={props.fitMarkers}
     >
-      {props.isMarkerShown && markers}
+      {props.isMarkerShown &&
+      <Markers
+        artData={props.artData} 
+        mouseOverIcon={props.mouseOverIcon}
+        mouseOutIcon={props.mouseOutIcon}
+        toogleInfoWindow={props.toogleInfoWindow}
+      />}
     </GoogleMap>
   )
 }))
