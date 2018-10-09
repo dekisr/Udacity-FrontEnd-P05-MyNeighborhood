@@ -1,3 +1,26 @@
+html {
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  text-shadow: 0 2px 0 rgba(0, 0, 0, 0.07);
+}
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0 0 5px 0;
+}
+
 .App {
   text-align: center;
 }
@@ -18,14 +41,26 @@ body {
 }
 
 .infoBox {
-  background-color: #61dafb;
+  background-color: #5890ff;
   width: 80% !important;
   max-width: 450px;
-  transform: translateX(-50%) !important;
+  transform: translateX(-50%) translateY(15px) !important;
   padding: .5rem;
+  overflow: visible !important;
+}
+.infoBox::before {
+  content: '';
+  width: 30px;
+  height: 30px;
+  background-color: #5890ff;
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  z-index: -1;
+  transform: translateX(-50%) rotate(45deg);
 }
 .teste {
-  max-height: 30vh !important;
+  max-height: 20vh !important;
   word-wrap: break-word;
   overflow-Y: scroll;
   background-color: #5890ff;
@@ -34,14 +69,21 @@ body {
 .mapContainer {
   display: grid;
   justify-items: center;
-  background-color: bisque;
+  align-items: end;
   width: 100%;
-  height: 100%;
+  height: 100vh;
+  background:
+  linear-gradient(135deg, #f8ff92 25%, transparent 25%) -50px 0,
+  linear-gradient(225deg, #f8ff92 25%, transparent 25%) -50px 0,
+  linear-gradient(315deg, #f8ff92 25%, transparent 25%),
+  linear-gradient(45deg, #f8ff92 25%, transparent 25%);
+background-size: 100px 100px;
+background-color: rgb(235, 231, 181);
 }
 
 .mapElement {
   width: 100%;
-  height: 100vh;
+  height: 70vh;
 }
 .App-link {
   color: #61dafb;
@@ -72,20 +114,23 @@ body {
 
 /* Position and sizing of clickable cross button */
 .bm-cross-button {
-  height: 24px;
-  width: 24px;
+  height: 54px;
+  width: 54px;
 }
 
 /* Color/shape of close button cross */
 .bm-cross {
-  background: #bdc3c7;
+  background: #7bff00;
 }
 
 /* General sidebar styles */
 .bm-menu {
   background: #373a47;
-  padding: 2.5em 1.5em 0;
+  padding: 1rem;
   font-size: 1.15em;
+  width: 100% !important;
+  padding: 0;
+  white-space: normal !important;
 }
 
 /* Morph shape necessary with bubble or elastic */
@@ -95,8 +140,8 @@ body {
 
 /* Wrapper for item list */
 .bm-item-list {
-  color: #b8b7ad;
-  /* padding: 0.8em; */
+  color: #f7e200;
+  width: 100% !important;
 }
 
 /* Individual item */
@@ -106,5 +151,31 @@ body {
 
 /* Styling of overlay */
 .bm-overlay {
-  background: rgba(0, 0, 0, 0.3);
+  background: rgba(247, 0, 0, 0.479) !important;
+}
+
+.menuArtists {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr 1fr;
+  width: 100%;
+  height: 100px;
+  background-color: #f7e200;
+  justify-content: center;
+  justify-items: center;
+  margin-top: 40px;
+}
+.menuArtists button {
+  text-decoration: none;
+  border: none;
+  width: 100%;
+  background-color: #f7e200;
+}
+.menuArtists button:focus {
+  outline: none;
+}
+.menuArtists button:hover {
+  background-color: #5890ff;
+}
+.menuActive {
+  background-color: #f8ff92 !important;
 }

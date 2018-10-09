@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import ReactGoogleMaps from './ReactGoogleMaps'
+import ReactGoogleMaps from './ReactGoogleMaps';
 
 class Map extends Component {
   static propTypes = {
@@ -11,7 +11,7 @@ class Map extends Component {
 
   fitMarkers = (map) => {
     const bounds = new window.google.maps.LatLngBounds();
-    this.props.artData.map((item) => bounds.extend(new window.google.maps.LatLng(item.lat, item.lng)))
+    this.props.filteredData.map((item) => bounds.extend(new window.google.maps.LatLng(item.lat, item.lng)))
     map.fitBounds(bounds);
   }
 
@@ -20,14 +20,14 @@ class Map extends Component {
     return (
       <ReactGoogleMaps
         artData={artData}
+        onZoomChanged={onZoomChanged}
+        animation={this.props.animation}
         filteredData={this.props.filteredData}
         fitMarkers={this.fitMarkers}
         mouseOverIcon={mouseOverIcon}
         mouseOutIcon={mouseOutIcon}
         toogleInfoWindow={toogleInfoWindow}
         mapCenter={mapCenter}
-        zoom={zoom}
-        onZoomChanged={onZoomChanged}
         isMarkerShown
         googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=AIzaSyAszEoz4HsD1TwV_9pZYzHJW3Fvd158C_M"
         loadingElement={<div style={{ height: `100%` }} />}

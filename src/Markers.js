@@ -9,33 +9,33 @@ class Markers extends Component {
         key={index}
         position={{ lat: marker.lat, lng: marker.lng }}
         icon={marker.icon}
-        animation={window.google.maps.Animation.BOUNCE}
         onMouseOver={() => this.props.mouseOverIcon(index)}
         onMouseOut={() => this.props.mouseOutIcon(index)}
         onClick={() => this.props.toogleInfoWindow(index)}
-        options = {{ closeBoxURL: ''}}
+        animation={this.props.animation}
+        defaultAnimation={1}
       >
-      {marker.isOpen &&
-        <InfoBox
-        options={{
-          disableAutoPan: true,
-          closeBoxURL: ''
-        }}
-        >
-          <div className="teste">
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus molestiae delectus dignissimos, earum beatae repellendus magni nihil! Impedit officia, quas illo, nihil in at ipsam dolorum, eum enim temporibus recusandae!</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus molestiae delectus dignissimos, earum beatae repellendus magni nihil! Impedit officia, quas illo, nihil in at ipsam dolorum, eum enim temporibus recusandae!</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus molestiae delectus dignissimos, earum beatae repellendus magni nihil! Impedit officia, quas illo, nihil in at ipsam dolorum, eum enim temporibus recusandae!</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus molestiae delectus dignissimos, earum beatae repellendus magni nihil! Impedit officia, quas illo, nihil in at ipsam dolorum, eum enim temporibus recusandae!</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus molestiae delectus dignissimos, earum beatae repellendus magni nihil! Impedit officia, quas illo, nihil in at ipsam dolorum, eum enim temporibus recusandae!</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus molestiae delectus dignissimos, earum beatae repellendus magni nihil! Impedit officia, quas illo, nihil in at ipsam dolorum, eum enim temporibus recusandae!</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus molestiae delectus dignissimos, earum beatae repellendus magni nihil! Impedit officia, quas illo, nihil in at ipsam dolorum, eum enim temporibus recusandae!</p>
-          </div>
-        </InfoBox>
-      }
+        {marker.isOpen &&
+          <InfoBox
+            options={{
+              disableAutoPan: true,
+              closeBoxURL: ''
+            }}
+          >
+            <div className="teste">
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus molestiae delectus dignissimos, earum beatae repellendus magni nihil! Impedit officia, quas illo, nihil in at ipsam dolorum, eum enim temporibus recusandae!</p>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus molestiae delectus dignissimos, earum beatae repellendus magni nihil! Impedit officia, quas illo, nihil in at ipsam dolorum, eum enim temporibus recusandae!</p>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus molestiae delectus dignissimos, earum beatae repellendus magni nihil! Impedit officia, quas illo, nihil in at ipsam dolorum, eum enim temporibus recusandae!</p>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus molestiae delectus dignissimos, earum beatae repellendus magni nihil! Impedit officia, quas illo, nihil in at ipsam dolorum, eum enim temporibus recusandae!</p>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus molestiae delectus dignissimos, earum beatae repellendus magni nihil! Impedit officia, quas illo, nihil in at ipsam dolorum, eum enim temporibus recusandae!</p>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus molestiae delectus dignissimos, earum beatae repellendus magni nihil! Impedit officia, quas illo, nihil in at ipsam dolorum, eum enim temporibus recusandae!</p>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus molestiae delectus dignissimos, earum beatae repellendus magni nihil! Impedit officia, quas illo, nihil in at ipsam dolorum, eum enim temporibus recusandae!</p>
+            </div>
+          </InfoBox>
+        }
       </Marker>
     ))
-  
+
     return (markers)
   }
 }

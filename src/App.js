@@ -1,22 +1,30 @@
 import React, { Component } from 'react';
 import './App.css';
-import Map from './Map'
-import Loading from './Loading'
-import MenuList from './MenuList'
+import Map from './Map';
+import Loading from './Loading';
+import MenuList from './MenuList';
+import daliMarker from './assets/icons/daliMarker.png'
+import daliMarkerMouseOver from './assets/icons/daliMarkerMouseOver.png'
+import reneMarker from './assets/icons/reneMarker.png'
+import reneMarkerMouseOver from './assets/icons/reneMarkerMouseOver.png'
+
 
 class App extends Component {
   state = {
     artData: [],
     filteredData: [],
     mapCenter: { lat: 123, lng: 123 },
-    zoom: 2,
+    zoom: 5,
     icons: {
-      daliDefaultIcon: 'https://maps.google.com/mapfiles/kml/shapes/parking_lot_maps.png',
-      daliMouseOverIcon: 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png',
-      reneDefaultIcon: 'https://maps.google.com/mapfiles/kml/shapes/parking_lot_maps.png',
-      reneMouseOverIcon: 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png'
+      daliDefaultIcon: `${daliMarker}`,
+      daliMouseOverIcon: `${daliMarkerMouseOver}`,
+      reneDefaultIcon: `${reneMarker}`,
+      reneMouseOverIcon: `${reneMarkerMouseOver}`
     },
-    loaded: false
+    loaded: false,
+    animation: 1,
+    activeMenu: 'All',
+    menuOpen: false
   }
   componentDidMount() {
     this.testFetch()
@@ -55,11 +63,16 @@ class App extends Component {
       }).catch(err => console.log(err))
   }
   filterData = (name) => {
+    this.state.artData.map((item) => item.isOpen = false)
     let filtered;
     name === 'All' ?
       filtered = this.state.artData :
       filtered = this.state.artData.filter((item => item.artist === name));
-    this.setState({ filteredData: filtered })
+    this.setState({
+      filteredData: filtered,
+      activeMenu: name,
+      menuOpen: true
+    })
     console.log(this.state.filteredData)
   }
   // Markers
@@ -79,21 +92,41 @@ class App extends Component {
   }
   toogleInfoWindow = (index) => {
     let filtered = this.state.filteredData;
-    (filtered[index].isOpen === true) ?
-      filtered[index].isOpen = false :
+    let zoom = this.state.zoom;
+    // (filtered[index].isOpen === true) ?
+    //   filtered[index].isOpen = false :
+    //   filtered[index].isOpen = true;
+
+    if (filtered[index].isOpen === true) {
+      filtered[index].isOpen = false;
+    } else {
       filtered[index].isOpen = true;
+    }
     for (let i = 0; i < filtered.length; i++) {
       (filtered[i] !== filtered[index]) && (filtered[i].isOpen = false);
     }
     this.setState({
       filteredData: filtered,
-      mapCenter: { lat: filtered[index].lat, lng: filtered[index].lng }
+      mapCenter: { lat: filtered[index].lat, lng: filtered[index].lng },
+      zoom: zoom
     })
   }
 
   onZoomChanged = () => {
+    this.setState({ animation: 2 })
+    this.setState({ animation: 1 })
+  }
+
+  openMarker = (index) => {
+    let filtered = this.state.filteredData;
+    filtered[index].isOpen = true;
+    for (let i = 0; i < filtered.length; i++) {
+      (filtered[i] !== filtered[index]) && (filtered[i].isOpen = false);
+    }
     this.setState({
-      zoom: 2
+      filteredData: filtered,
+      mapCenter: { lat: filtered[index].lat, lng: filtered[index].lng },
+      menuOpen: false
     })
   }
 
@@ -106,18 +139,22 @@ class App extends Component {
           <div id="outer-container">
             <MenuList
               filterData={this.filterData}
+              filteredData={this.state.filteredData}
+              activeMenu={this.state.activeMenu}
+              openMarker={this.openMarker}
+              isOpen={this.state.menuOpen}
             />
             <main id="page-wrap">
               <Map
+                animation={this.state.animation}
                 artData={this.state.artData}
                 filteredData={this.state.filteredData}
                 mapCenter={this.state.mapCenter}
-                zoom={this.state.zoom}
-                onZoomChanged={this.onZoomChanged}
                 markersDefaultIcons={this.state.icons.defaultIcon}
                 mouseOverIcon={this.mouseOverIcon}
                 mouseOutIcon={this.mouseOutIcon}
                 toogleInfoWindow={this.toogleInfoWindow}
+                onZoomChanged={this.onZoomChanged}
               />
             </main>
           </div>
