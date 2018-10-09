@@ -5,17 +5,20 @@ import Markers from './Markers';
 const ReactGoogleMaps = withScriptjs(withGoogleMap((props) => {
   return (
     <GoogleMap
-      defaultZoom={1}
-      defaultCenter={{ lat: -30.12345, lng: -40.12345 }}
       defaultOptions={{
         disableDefaultUI: true,
-        fullscreenControl: true
+        fullscreenControl: true,
+        gestureHandling: 'cooperative'
       }}
       ref={props.fitMarkers}
+      center={props.mapCenter}
+      onZoomChanged={props.onZoomChanged}
+      zoom={props.zoom}
     >
       {props.isMarkerShown &&
       <Markers
-        artData={props.artData} 
+        artData={props.artData}
+        filteredData={props.filteredData}
         mouseOverIcon={props.mouseOverIcon}
         mouseOutIcon={props.mouseOutIcon}
         toogleInfoWindow={props.toogleInfoWindow}

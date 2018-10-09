@@ -2,10 +2,14 @@ import React, { Component } from 'react';
 import './App.css';
 import Map from './Map'
 import Loading from './Loading'
+import MenuList from './MenuList'
 
 class App extends Component {
   state = {
     artData: [],
+    filteredData: [],
+    mapCenter: { lat: 123, lng: 123 },
+    zoom: 2,
     icons: {
       daliDefaultIcon: 'https://maps.google.com/mapfiles/kml/shapes/parking_lot_maps.png',
       daliMouseOverIcon: 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png',
@@ -14,7 +18,7 @@ class App extends Component {
     },
     loaded: false
   }
-  componentWillMount() {
+  componentDidMount() {
     this.testFetch()
   }
   testFetch() {
@@ -43,51 +47,80 @@ class App extends Component {
         })
         return artData
       }).then(resp => {
-        console.log(resp)
         this.setState({
           artData: resp,
+          filteredData: resp,
           loaded: true
         })
       }).catch(err => console.log(err))
   }
+  filterData = (name) => {
+    let filtered;
+    name === 'All' ?
+      filtered = this.state.artData :
+      filtered = this.state.artData.filter((item => item.artist === name));
+    this.setState({ filteredData: filtered })
+    console.log(this.state.filteredData)
+  }
   // Markers
   mouseOverIcon = (index) => {
-    let artData = this.state.artData;
-    (artData[index].artist === 'Salvador Dali') ?
-      artData[index].icon = this.state.icons.daliMouseOverIcon :
-      artData[index].icon = this.state.icons.reneMouseOverIcon;
-    this.setState({ artData })
+    let filtered = this.state.filteredData;
+    (filtered[index].artist === 'Salvador Dali') ?
+      filtered[index].icon = this.state.icons.daliMouseOverIcon :
+      filtered[index].icon = this.state.icons.reneMouseOverIcon;
+    this.setState({ filteredData: filtered })
   }
   mouseOutIcon = (index) => {
-    let artData = this.state.artData;
-    (artData[index].artist === 'Salvador Dali') ?
-      artData[index].icon = this.state.icons.daliDefaultIcon :
-      artData[index].icon = this.state.icons.reneDefaultIcon;
-    this.setState({ artData })
+    let filtered = this.state.filteredData;
+    (filtered[index].artist === 'Salvador Dali') ?
+      filtered[index].icon = this.state.icons.daliDefaultIcon :
+      filtered[index].icon = this.state.icons.reneDefaultIcon;
+    this.setState({ filteredData: filtered })
   }
   toogleInfoWindow = (index) => {
-    let artData = this.state.artData;
-    (artData[index].isOpen === true) ?
-      artData[index].isOpen = false :
-      artData[index].isOpen = true;
-    for (let i = 0; i < artData.length; i++) {
-      (artData[i] !== artData[index]) && (artData[i].isOpen = false);
+    let filtered = this.state.filteredData;
+    (filtered[index].isOpen === true) ?
+      filtered[index].isOpen = false :
+      filtered[index].isOpen = true;
+    for (let i = 0; i < filtered.length; i++) {
+      (filtered[i] !== filtered[index]) && (filtered[i].isOpen = false);
     }
-    this.setState({ artData })
+    this.setState({
+      filteredData: filtered,
+      mapCenter: { lat: filtered[index].lat, lng: filtered[index].lng }
+    })
   }
+
+  onZoomChanged = () => {
+    this.setState({
+      zoom: 2
+    })
+  }
+
   render() {
     if (this.state.loaded === false) {
       return <Loading />
     } else {
       return (
         <div className="App">
-          <Map
-            artData={this.state.artData}
-            markersDefaultIcons={this.state.icons.defaultIcon}
-            mouseOverIcon={this.mouseOverIcon}
-            mouseOutIcon={this.mouseOutIcon}
-            toogleInfoWindow={this.toogleInfoWindow}
-          />
+          <div id="outer-container">
+            <MenuList
+              filterData={this.filterData}
+            />
+            <main id="page-wrap">
+              <Map
+                artData={this.state.artData}
+                filteredData={this.state.filteredData}
+                mapCenter={this.state.mapCenter}
+                zoom={this.state.zoom}
+                onZoomChanged={this.onZoomChanged}
+                markersDefaultIcons={this.state.icons.defaultIcon}
+                mouseOverIcon={this.mouseOverIcon}
+                mouseOutIcon={this.mouseOutIcon}
+                toogleInfoWindow={this.toogleInfoWindow}
+              />
+            </main>
+          </div>
         </div>
       );
     }

@@ -16,19 +16,23 @@ class Map extends Component {
   }
 
   render() {
-    const { artData, mouseOverIcon, mouseOutIcon, toogleInfoWindow } = this.props
+    const { artData, mouseOverIcon, mouseOutIcon, toogleInfoWindow, mapCenter, zoom, onZoomChanged } = this.props
     return (
       <ReactGoogleMaps
         artData={artData}
+        filteredData={this.props.filteredData}
         fitMarkers={this.fitMarkers}
         mouseOverIcon={mouseOverIcon}
         mouseOutIcon={mouseOutIcon}
         toogleInfoWindow={toogleInfoWindow}
+        mapCenter={mapCenter}
+        zoom={zoom}
+        onZoomChanged={onZoomChanged}
         isMarkerShown
         googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=AIzaSyAszEoz4HsD1TwV_9pZYzHJW3Fvd158C_M"
         loadingElement={<div style={{ height: `100%` }} />}
-        containerElement={<div style={{ height: `100vh` }} />}
-        mapElement={<div style={{ height: `100%` }} />}
+        containerElement={<div className="mapContainer" />}
+        mapElement={<div className="mapElement" />}
       />
     )
   }
