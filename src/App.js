@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
-import './App.css';
-import Map from './Map';
 import Loading from './Loading';
+import DataFailed from './DataFailed';
+import ErrorBoundary from './ErrorBoundary';
+import Map from './Map';
 import MenuList from './MenuList';
 import daliMarker from './assets/icons/daliMarker.png'
 import daliMarkerMouseOver from './assets/icons/daliMarkerMouseOver.png'
 import reneMarker from './assets/icons/reneMarker.png'
 import reneMarkerMouseOver from './assets/icons/reneMarkerMouseOver.png'
+import './App.css';
 
 
 class App extends Component {
@@ -14,17 +16,17 @@ class App extends Component {
     artData: [],
     filteredData: [],
     mapCenter: { lat: 123, lng: 123 },
-    zoom: 5,
     icons: {
       daliDefaultIcon: `${daliMarker}`,
       daliMouseOverIcon: `${daliMarkerMouseOver}`,
       reneDefaultIcon: `${reneMarker}`,
       reneMouseOverIcon: `${reneMarkerMouseOver}`
     },
-    loaded: false,
     animation: 1,
     activeMenu: 'All',
-    menuOpen: false
+    menuOpen: false,
+    ftFailed: false,
+    loaded: false
   }
   componentDidMount() {
     this.testFetch()
@@ -34,7 +36,6 @@ class App extends Component {
     fetch(url)
       .then(resp => resp.json())
       .then(data => {
-        console.log(data)
         let artData = [];
         data.rows.map((item, index) => {
           // mount objects //
@@ -61,7 +62,13 @@ class App extends Component {
           filteredData: resp,
           loaded: true
         })
-      }).catch(err => console.log(err))
+      }).catch(err => {
+        console.log(err)
+        this.setState({
+          ftFailed: true,
+          loaded: true
+        })
+      })
   }
   filterData = (name) => {
     this.state.artData.map((item) => item.isOpen = false)
@@ -74,7 +81,6 @@ class App extends Component {
       activeMenu: name,
       menuOpen: true
     })
-    console.log(this.state.filteredData)
   }
   // Markers
   mouseOverIcon = (index) => {
@@ -137,6 +143,8 @@ class App extends Component {
   render() {
     if (this.state.loaded === false) {
       return <Loading />
+    } else if (this.state.ftFailed === true) {
+      return <DataFailed />
     } else {
       return (
         <div className="App">
@@ -149,17 +157,18 @@ class App extends Component {
               isOpen={this.state.menuOpen}
             />
             <main id="page-wrap">
-              <Map
-                animation={this.state.animation}
-                artData={this.state.artData}
-                filteredData={this.state.filteredData}
-                mapCenter={this.state.mapCenter}
-                markersDefaultIcons={this.state.icons.defaultIcon}
-                mouseOverIcon={this.mouseOverIcon}
-                mouseOutIcon={this.mouseOutIcon}
-                toogleInfoWindow={this.toogleInfoWindow}
-                onZoomChanged={this.onZoomChanged}
-              />
+              <ErrorBoundary>
+                <Map
+                  artData={this.state.artData}
+                  filteredData={this.state.filteredData}
+                  mapCenter={this.state.mapCenter}
+                  animation={this.state.animation}
+                  mouseOverIcon={this.mouseOverIcon}
+                  mouseOutIcon={this.mouseOutIcon}
+                  toogleInfoWindow={this.toogleInfoWindow}
+                  onZoomChanged={this.onZoomChanged}
+                />
+              </ErrorBoundary>
             </main>
           </div>
         </div>

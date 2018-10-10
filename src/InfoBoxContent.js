@@ -1,54 +1,61 @@
 import React, { Component } from "react";
+import Loading from './Loading';
 
 class InfoBoxContent extends Component {
   state = {
-    teste: '',
-    dataFailed: false
+    data: '',
+    dataFailed: false,
+    loaded: false
   }
 
   componentDidMount() {
-    this.testeWiki(this.props.artData.wiki)
+    this.wikiData(this.props.itemData.wiki)
   }
 
-  testeWiki(title) {
+  wikiData(title) {
     const url = `https://en.wikipedia.org/api/rest_v1/page/summary/${title}`;
     let text;
     fetch(url)
       .then(resp => resp.json())
       .then(data => {
         !data.extract ?
-          text = `There's no Wikipedia article for '${this.props.artData.title}' painting.` :
+          text = `There's no Wikipedia article for '${this.props.itemData.title}' painting.` :
           text = data.extract;
-        console.log(data)
         this.setState({
-          teste: text
+          data: text,
+          loaded: true
         })
       }).catch(err => {
         console.log(err)
         this.setState({
-          dataFailed: true
+          dataFailed: true,
+          loaded: true
         })
-        console.log(this.state.dataFailed)
       })
   }
   render() {
-    return (
-      <div className="ibContent">
-        <div className="painting">
-          <img src={this.props.artData.img} alt={this.props.artData.title} />
+    const { itemData } = this.props;
+    if (this.state.loaded === false) {
+      return <Loading />
+    } else {
+      return (
+        <div className="ibContent">
+          <div className="painting">
+            <img src={itemData.img} alt={itemData.title} />
+          </div>
+          <section className="info">
+            <h2>{itemData.title}</h2>
+            <p>Year: {itemData.year}</p>
+            <p>Image: <em>wikiart.org</em></p>
+          </section>
+          <section className="wiki">
+            <h3>WIKIPEDIA</h3>
+            {(this.state.dataFailed === true) && <span className="error">FAILED TO FETCH DATA FROM WIKIPEDIA</span>}
+            <p>{this.state.data}</p>
+          </section>
         </div>
-        <section className="info">
-          <h2>{this.props.artData.title}</h2>
-          <p>Year: {this.props.artData.year}</p>
-          <p>Image: <em>wikiart.org</em></p>
-        </section>
-        <section className="wiki">
-          <h3>WIKIPEDIA</h3>
-          {(this.state.dataFailed === true) && <span className="error">FAILED TO FETCH DATA FROM WIKIPEDIA</span>}
-          <p>{this.state.teste}</p>
-        </section>
-      </div>
-    );
+      );
+    }
   }
 }
 
