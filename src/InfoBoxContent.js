@@ -33,12 +33,14 @@ class InfoBoxContent extends Component {
   }
   render() {
     return (
-      <div className="teste">
-        <img src={this.props.artData.img} alt="" />
+      <div className="ibContent">
+        <div className="painting">
+          <img src={this.props.artData.img} alt={this.props.artData.title} />
+        </div>
         <section className="info">
           <h2>{this.props.artData.title}</h2>
           <p>Year: {this.props.artData.year}</p>
-          <p>Location: {this.props.artData.year}</p>
+          <p>Image: <em>wikiart.org</em></p>
         </section>
         <section className="wiki">
           <h3>WIKIPEDIA</h3>

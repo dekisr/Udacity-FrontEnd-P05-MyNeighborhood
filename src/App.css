@@ -1,18 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Bree+Serif");
-html {
-  box-sizing: border-box;
-  font-family: 'Bree Serif', serif;
-  text-shadow: 0 2px 0 rgba(0, 0, 0, .07);
-}
-*,
-*:before,
-*:after {
-  box-sizing: inherit;
-  margin: 0;
-  padding: 0;
-}
-
-.palette01 {
+#palette01 {
   background-color:
   hsl(0, 35%, 5%),
   hsl(0, 100%, 90%),
@@ -22,189 +9,174 @@ html {
   hsl(185, 50%, 50%),
   hsl(190, 90%, 55%);
 }
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  margin: 0 0 5px 0;
+html {
+  box-sizing: border-box;
+  font-family: 'Bree Serif', serif;
+  text-shadow: 0 2px 0 hsl(0, 35%, 5%), .1;
 }
-
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+}
 body {
-  background-color: #61dafb;
-}
-
-.infoBox {
-  background-color: hsl(355, 80%, 60%);
-  width: 80% !important;
-  max-width: 450px;
-  transform: translateX(-50%) translateY(15px) !important;
-  padding: .5rem;
-  overflow: visible !important;
-}
-.infoBox::before {
-  content: "";
-  width: 30px;
-  height: 30px;
-  background-color: hsl(355, 80%, 60%);
-  position: absolute;
-  top: -10px;
-  left: 50%;
-  z-index: -1;
-  transform: translateX(-50%) rotate(45deg);
-}
-.teste {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 2;
-  max-height: 20vh !important;
-  word-wrap: break-word;
-  overflow-y: scroll;
-  background-color: hsl(355, 80%, 60%);
-}
-.teste img {
-  width: 100%;
-  max-width: 100%;
-}
-.teste .info {
-  padding: .5rem;
-  background-color: hsl(0, 100%, 90%);
-  color: hsl(0, 35%, 5%);
-  margin-right: .5rem;
-}
-.teste .wiki {
-  grid-column: 1 / 3;
+  font-family: 'Bree Serif', serif;
   background-color: hsl(45, 75%, 85%);
-  color: hsl(355, 80%, 60%);
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: .8rem;
-  padding: .5rem;
-  margin-top: .5rem;
-  margin-right: .5rem;
-  line-height: 1.3;
-}
-.teste .wiki .error {
-  display: block;
-  text-align: center;
-  background-color: hsl(355, 80%, 60%);
-  color: hsl(45, 75%, 85%);
-  padding: .5rem;
-  font-size: 1rem;
-}
-.teste .wiki h3 {
-  color: hsl(0, 35%, 5%);
-  border-bottom: 2px solid hsl(0, 35%, 5%);
-  margin-bottom: .5rem;
-}
-.teste .wiki p {
-  padding: .3rem;
 }
 
+/* map */
 .mapContainer {
   display: grid;
   justify-items: center;
   align-items: end;
   width: 100%;
   height: 100vh;
-  background: linear-gradient(135deg, hsl(0, 100%, 90%) 25%, transparent 25%) -2px
-      0,
-    linear-gradient(225deg, hsl(0, 100%, 90%) 25%, transparent 25%) -2px 0,
-    linear-gradient(315deg, hsl(0, 100%, 90%) 25%, transparent 25%),
-    linear-gradient(45deg, hsl(0, 100%, 90%) 25%, transparent 25%);
+  background:
+  linear-gradient(135deg, hsl(0, 100%, 90%) 25%, transparent 25%) -2px 0,
+  linear-gradient(225deg, hsl(0, 100%, 90%) 25%, transparent 25%) -2px 0,
+  linear-gradient(315deg, hsl(0, 100%, 90%) 25%, transparent 25%),
+  linear-gradient(45deg, hsl(0, 100%, 90%) 25%, transparent 25%);
   background-size: 4px 4px;
   background-color: hsl(355, 80%, 60%);
 }
-
 .mapElement {
   width: 100%;
   height: 80vh;
   border-top: 1rem solid hsl(355, 80%, 60%);
   border-bottom: 1rem solid hsl(355, 80%, 60%);
 }
-.App-link {
-  color: #61dafb;
+
+/* infoBox */
+.infoBox {
+  width: 80% !important;
+  max-width: 450px;
+  padding: .5rem;
+  overflow: visible !important;
+  transform: translateX(-50%) translateY(15px) !important;
+  background-color: hsl(355, 80%, 60%);
+}
+.infoBox::before {
+  content: "";
+  width: 2rem;
+  height: 2rem;
+  position: absolute;
+  top: -.5rem;
+  left: 50%;
+  z-index: -1;
+  transform: translateX(-50%) rotate(45deg);
+  background-color: hsl(355, 80%, 60%);
+}
+.ibContent {
+  display: grid;
+  grid-template-columns: 1fr;
+  max-height: 25vh !important;
+  word-wrap: break-word;
+  overflow-y: scroll;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: hsl(355, 80%, 60%);
+}
+.ibContent .painting {
+  margin-right: .5rem;
+  background-color: hsl(185, 50%, 50%);
+}
+.ibContent .painting img {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+}
+.ibContent .info {
+  padding: .5rem;
+  margin-right: .5rem;
+  font-size: .8rem;
+  color: hsl(0, 35%, 5%);
+  background-color: hsl(0, 100%, 90%);
+}
+.ibContent .info h2 {
+  font-size: 1.2rem;
+  margin-bottom: .5rem;
+}
+.ibContent .wiki {
+  padding: .5rem;
+  margin-right: .5rem;
+  font-size: .8rem;
+  line-height: 1.3;
+  color: hsl(355, 80%, 60%);
+  background-color: hsl(45, 75%, 85%);
+}
+.ibContent .wiki .error {
+  display: block;
+  padding: .5rem;
+  text-align: center;
+  font-size: 1rem;
+  color: hsl(45, 75%, 85%);
+  background-color: hsl(355, 80%, 60%);
+}
+.ibContent .wiki h3 {
+  margin-bottom: .5rem;
+  border-bottom: 2px solid hsl(0, 35%, 5%);
+  color: hsl(0, 35%, 5%);
+}
+.ibContent .wiki p {
+  padding: .3rem;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+@media screen and (min-width: 501px) {
+  .ibContent {
+    grid-template-columns: 1fr 1fr;
+    grid-row-gap: .5rem;
   }
-  to {
-    transform: rotate(360deg);
+  .ibContent .painting {
+    margin-right: 0;
+  }
+  .ibContent .wiki {
+    grid-column: span 2;
   }
 }
 
-/* Position and sizing of burger button */
+/* react-burger-menu from https://github.com/negomi/react-burger-menu */
 .bm-burger-button {
   position: fixed;
-  width: 36px;
-  height: 30px;
   left: 36px;
   top: 36px;
+  width: 36px;
+  height: 30px;
 }
-
-/* Color/shape of burger icon bars */
 .bm-burger-bars {
   background: #373a47;
 }
-
-/* Position and sizing of clickable cross button */
 .bm-cross-button {
-  height: 54px;
-  width: 54px;
+  width: 34px;
+  height: 34px;
 }
-
-/* Color/shape of close button cross */
 .bm-cross {
-  background: #7bff00;
+  background: hsl(0, 35%, 5%);
 }
-
-/* General sidebar styles */
 .bm-menu {
-  background-color: hsl(355, 80%, 60%);
-  font-size: 1rem;
   width: 100% !important;
   padding: 0;
   white-space: normal !important;
   overflow-y: auto !important;
+  font-size: 1rem;
+  background-color: hsl(355, 80%, 60%);
 }
-
-/* Morph shape necessary with bubble or elastic */
 .bm-morph-shape {
   fill: hsl(355, 80%, 60%);
 }
-
-/* Wrapper for item list */
 .bm-item-list {
-  color: hsl(0, 100%, 90%);
   width: 100% !important;
+  color: hsl(0, 100%, 90%);
 }
-
-/* Individual item */
 .bm-item {
   display: inline-block;
 }
-
-/* Styling of overlay */
 .bm-overlay {
   background-color: hsla(0, 100%, 90%, .6) !important;
 }
-/* scrollbar */
-::-webkit-scrollbar {
-  width: 12px;
-}
-::-webkit-scrollbar-track {
-  background-color: hsla(0, 96%, 90%, .5);
-}
-::-webkit-scrollbar-thumb {
-  background: hsla(185, 50%, 50%, .9);
-}
-::-webkit-scrollbar-thumb:window-inactive {
-  background: rgba(245, 206, 206, .7);
-}
 
+/* menu */
 .menuTop {
   display: block;
   height: 10rem;
@@ -219,43 +191,65 @@ body {
   justify-items: center;
 }
 .menuArtists button {
+  width: 100%;
+  padding: 1rem;
   font-family: 'Bree Serif', serif;
+  font-size: 1rem;
   text-decoration: none;
   border: none;
-  width: 100%;
-  font-size: 1rem;
-  padding: 1rem;
   background-color: hsl(45, 80%, 70%);
 }
 .menuArtists button:focus {
   outline: none;
 }
 .menuArtists button:hover {
-  background-color: #5890ff;
+  background-color: hsl(185, 50%, 50%);
 }
 .menuActive {
   background-color: hsl(45, 75%, 85%) !important;
 }
 ul {
-  list-style-type: none;
+  display: block;
   margin: .8rem;
+  margin-top: 1.2rem;
   padding: 0;
+  list-style-type: none;
   font-size: .9rem;
 }
-
 li {
-  text-transform: uppercase;
   padding: .5rem;
+  text-transform: uppercase;
   border: 1px solid hsl(0, 100%, 90%);
   border-bottom: none;
 }
-
 li:last-of-type {
   border-bottom: 1px solid hsl(0, 100%, 90%);
 }
-
 li:hover {
   cursor: pointer;
   color: hsl(0, 35%, 5%);
   background-color: hsl(0, 100%, 90%);
+}
+
+/* scrollbar */
+::-webkit-scrollbar {
+  width: 12px;
+}
+::-webkit-scrollbar-track {
+  background-color: hsla(0, 96%, 90%, .5);
+}
+::-webkit-scrollbar-thumb {
+  background: hsla(185, 50%, 50%, .9);
+}
+::-webkit-scrollbar-thumb:window-inactive {
+  background: rgba(245, 206, 206, .7);
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
