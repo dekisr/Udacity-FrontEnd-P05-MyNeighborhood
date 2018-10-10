@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Marker } from "react-google-maps"
 import InfoBox from 'react-google-maps/lib/components/addons/InfoBox';
+import InfoBoxContent from './InfoBoxContent';
 
 class Markers extends Component {
   render() {
@@ -22,15 +23,9 @@ class Markers extends Component {
               closeBoxURL: ''
             }}
           >
-            <div className="teste">
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus molestiae delectus dignissimos, earum beatae repellendus magni nihil! Impedit officia, quas illo, nihil in at ipsam dolorum, eum enim temporibus recusandae!</p>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus molestiae delectus dignissimos, earum beatae repellendus magni nihil! Impedit officia, quas illo, nihil in at ipsam dolorum, eum enim temporibus recusandae!</p>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus molestiae delectus dignissimos, earum beatae repellendus magni nihil! Impedit officia, quas illo, nihil in at ipsam dolorum, eum enim temporibus recusandae!</p>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus molestiae delectus dignissimos, earum beatae repellendus magni nihil! Impedit officia, quas illo, nihil in at ipsam dolorum, eum enim temporibus recusandae!</p>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus molestiae delectus dignissimos, earum beatae repellendus magni nihil! Impedit officia, quas illo, nihil in at ipsam dolorum, eum enim temporibus recusandae!</p>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus molestiae delectus dignissimos, earum beatae repellendus magni nihil! Impedit officia, quas illo, nihil in at ipsam dolorum, eum enim temporibus recusandae!</p>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus molestiae delectus dignissimos, earum beatae repellendus magni nihil! Impedit officia, quas illo, nihil in at ipsam dolorum, eum enim temporibus recusandae!</p>
-            </div>
+            <InfoBoxContent
+              artData={marker}
+            />
           </InfoBox>
         }
       </Marker>

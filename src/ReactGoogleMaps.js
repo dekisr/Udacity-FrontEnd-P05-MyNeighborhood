@@ -10,7 +10,7 @@ const ReactGoogleMaps = withScriptjs(withGoogleMap((props) => {
         disableDefaultUI: true,
         fullscreenControl: true,
         zoomControl: true,
-        gestureHandling: 'greedy',
+        gestureHandling: 'cooperative',
         styles: mapStyle
       }}
       ref={props.fitMarkers}

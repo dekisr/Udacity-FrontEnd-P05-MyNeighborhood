@@ -1,8 +1,8 @@
+@import url("https://fonts.googleapis.com/css?family=Bree+Serif");
 html {
   box-sizing: border-box;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
-    Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-  text-shadow: 0 2px 0 rgba(0, 0, 0, 0.07);
+  font-family: 'Bree Serif', serif;
+  text-shadow: 0 2px 0 rgba(0, 0, 0, .07);
 }
 *,
 *:before,
@@ -20,7 +20,7 @@ html {
   hsl(45, 80%, 70%),
   hsl(45, 75%, 85%),
   hsl(185, 50%, 50%),
-  hsl(190, 90%, 55%)
+  hsl(190, 90%, 55%);
 }
 
 h1,
@@ -45,7 +45,7 @@ body {
   overflow: visible !important;
 }
 .infoBox::before {
-  content: '';
+  content: "";
   width: 30px;
   height: 30px;
   background-color: hsl(355, 80%, 60%);
@@ -56,10 +56,50 @@ body {
   transform: translateX(-50%) rotate(45deg);
 }
 .teste {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 2;
   max-height: 20vh !important;
   word-wrap: break-word;
-  overflow-Y: scroll;
+  overflow-y: scroll;
   background-color: hsl(355, 80%, 60%);
+}
+.teste img {
+  width: 100%;
+  max-width: 100%;
+}
+.teste .info {
+  padding: .5rem;
+  background-color: hsl(0, 100%, 90%);
+  color: hsl(0, 35%, 5%);
+  margin-right: .5rem;
+}
+.teste .wiki {
+  grid-column: 1 / 3;
+  background-color: hsl(45, 75%, 85%);
+  color: hsl(355, 80%, 60%);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: .8rem;
+  padding: .5rem;
+  margin-top: .5rem;
+  margin-right: .5rem;
+  line-height: 1.3;
+}
+.teste .wiki .error {
+  display: block;
+  text-align: center;
+  background-color: hsl(355, 80%, 60%);
+  color: hsl(45, 75%, 85%);
+  padding: .5rem;
+  font-size: 1rem;
+}
+.teste .wiki h3 {
+  color: hsl(0, 35%, 5%);
+  border-bottom: 2px solid hsl(0, 35%, 5%);
+  margin-bottom: .5rem;
+}
+.teste .wiki p {
+  padding: .3rem;
 }
 
 .mapContainer {
@@ -68,18 +108,20 @@ body {
   align-items: end;
   width: 100%;
   height: 100vh;
-  background:
-  linear-gradient(135deg, hsl(0, 100%, 90%) 25%, transparent 25%) -2px 0,
-  linear-gradient(225deg, hsl(0, 100%, 90%) 25%, transparent 25%) -2px 0,
-  linear-gradient(315deg, hsl(0, 100%, 90%) 25%, transparent 25%),
-  linear-gradient(45deg, hsl(0, 100%, 90%) 25%, transparent 25%);
-background-size: 4px 4px;
-background-color: hsl(355, 80%, 60%);
+  background: linear-gradient(135deg, hsl(0, 100%, 90%) 25%, transparent 25%) -2px
+      0,
+    linear-gradient(225deg, hsl(0, 100%, 90%) 25%, transparent 25%) -2px 0,
+    linear-gradient(315deg, hsl(0, 100%, 90%) 25%, transparent 25%),
+    linear-gradient(45deg, hsl(0, 100%, 90%) 25%, transparent 25%);
+  background-size: 4px 4px;
+  background-color: hsl(355, 80%, 60%);
 }
 
 .mapElement {
   width: 100%;
-  height: 90vh;
+  height: 80vh;
+  border-top: 1rem solid hsl(355, 80%, 60%);
+  border-bottom: 1rem solid hsl(355, 80%, 60%);
 }
 .App-link {
   color: #61dafb;
@@ -122,11 +164,11 @@ background-color: hsl(355, 80%, 60%);
 /* General sidebar styles */
 .bm-menu {
   background-color: hsl(355, 80%, 60%);
-  padding: 1rem;
-  font-size: 1.15em;
+  font-size: 1rem;
   width: 100% !important;
   padding: 0;
   white-space: normal !important;
+  overflow-y: auto !important;
 }
 
 /* Morph shape necessary with bubble or elastic */
@@ -147,7 +189,20 @@ background-color: hsl(355, 80%, 60%);
 
 /* Styling of overlay */
 .bm-overlay {
-  background-color: hsla(0, 100%, 90%, 0.6) !important;
+  background-color: hsla(0, 100%, 90%, .6) !important;
+}
+/* scrollbar */
+::-webkit-scrollbar {
+  width: 12px;
+}
+::-webkit-scrollbar-track {
+  background-color: hsla(0, 96%, 90%, .5);
+}
+::-webkit-scrollbar-thumb {
+  background: hsla(185, 50%, 50%, .9);
+}
+::-webkit-scrollbar-thumb:window-inactive {
+  background: rgba(245, 206, 206, .7);
 }
 
 .menuTop {
@@ -164,9 +219,12 @@ background-color: hsl(355, 80%, 60%);
   justify-items: center;
 }
 .menuArtists button {
+  font-family: 'Bree Serif', serif;
   text-decoration: none;
   border: none;
   width: 100%;
+  font-size: 1rem;
+  padding: 1rem;
   background-color: hsl(45, 80%, 70%);
 }
 .menuArtists button:focus {
@@ -177,4 +235,27 @@ background-color: hsl(355, 80%, 60%);
 }
 .menuActive {
   background-color: hsl(45, 75%, 85%) !important;
+}
+ul {
+  list-style-type: none;
+  margin: .8rem;
+  padding: 0;
+  font-size: .9rem;
+}
+
+li {
+  text-transform: uppercase;
+  padding: .5rem;
+  border: 1px solid hsl(0, 100%, 90%);
+  border-bottom: none;
+}
+
+li:last-of-type {
+  border-bottom: 1px solid hsl(0, 100%, 90%);
+}
+
+li:hover {
+  cursor: pointer;
+  color: hsl(0, 35%, 5%);
+  background-color: hsl(0, 100%, 90%);
 }

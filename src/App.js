@@ -47,6 +47,7 @@ class App extends Component {
             lat: item[3],
             lng: item[4],
             img: item[5],
+            wiki: item[6],
             icon: icon,
             isOpen: false
           }
