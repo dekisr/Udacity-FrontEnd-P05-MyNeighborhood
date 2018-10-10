@@ -12,6 +12,17 @@ html {
   padding: 0;
 }
 
+.palette01 {
+  background-color:
+  hsl(0, 35%, 5%),
+  hsl(0, 100%, 90%),
+  hsl(355, 80%, 60%),
+  hsl(45, 80%, 70%),
+  hsl(45, 75%, 85%),
+  hsl(185, 50%, 50%),
+  hsl(190, 90%, 55%)
+}
+
 h1,
 h2,
 h3,
@@ -21,27 +32,12 @@ h6 {
   margin: 0 0 5px 0;
 }
 
-.App {
-  text-align: center;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
 body {
   background-color: #61dafb;
 }
 
 .infoBox {
-  background-color: #5890ff;
+  background-color: hsl(355, 80%, 60%);
   width: 80% !important;
   max-width: 450px;
   transform: translateX(-50%) translateY(15px) !important;
@@ -52,7 +48,7 @@ body {
   content: '';
   width: 30px;
   height: 30px;
-  background-color: #5890ff;
+  background-color: hsl(355, 80%, 60%);
   position: absolute;
   top: -10px;
   left: 50%;
@@ -63,7 +59,7 @@ body {
   max-height: 20vh !important;
   word-wrap: break-word;
   overflow-Y: scroll;
-  background-color: #5890ff;
+  background-color: hsl(355, 80%, 60%);
 }
 
 .mapContainer {
@@ -73,17 +69,17 @@ body {
   width: 100%;
   height: 100vh;
   background:
-  linear-gradient(135deg, #f8ff92 25%, transparent 25%) -50px 0,
-  linear-gradient(225deg, #f8ff92 25%, transparent 25%) -50px 0,
-  linear-gradient(315deg, #f8ff92 25%, transparent 25%),
-  linear-gradient(45deg, #f8ff92 25%, transparent 25%);
-background-size: 100px 100px;
-background-color: rgb(235, 231, 181);
+  linear-gradient(135deg, hsl(0, 100%, 90%) 25%, transparent 25%) -2px 0,
+  linear-gradient(225deg, hsl(0, 100%, 90%) 25%, transparent 25%) -2px 0,
+  linear-gradient(315deg, hsl(0, 100%, 90%) 25%, transparent 25%),
+  linear-gradient(45deg, hsl(0, 100%, 90%) 25%, transparent 25%);
+background-size: 4px 4px;
+background-color: hsl(355, 80%, 60%);
 }
 
 .mapElement {
   width: 100%;
-  height: 70vh;
+  height: 90vh;
 }
 .App-link {
   color: #61dafb;
@@ -125,7 +121,7 @@ background-color: rgb(235, 231, 181);
 
 /* General sidebar styles */
 .bm-menu {
-  background: #373a47;
+  background-color: hsl(355, 80%, 60%);
   padding: 1rem;
   font-size: 1.15em;
   width: 100% !important;
@@ -135,12 +131,12 @@ background-color: rgb(235, 231, 181);
 
 /* Morph shape necessary with bubble or elastic */
 .bm-morph-shape {
-  fill: #373a47;
+  fill: hsl(355, 80%, 60%);
 }
 
 /* Wrapper for item list */
 .bm-item-list {
-  color: #f7e200;
+  color: hsl(0, 100%, 90%);
   width: 100% !important;
 }
 
@@ -151,24 +147,27 @@ background-color: rgb(235, 231, 181);
 
 /* Styling of overlay */
 .bm-overlay {
-  background: rgba(247, 0, 0, 0.479) !important;
+  background-color: hsla(0, 100%, 90%, 0.6) !important;
 }
 
+.menuTop {
+  display: block;
+  height: 10rem;
+  background-color: hsl(190, 90%, 55%);
+}
 .menuArtists {
   display: grid !important;
   grid-template-columns: 1fr 1fr 1fr;
   width: 100%;
-  height: 100px;
-  background-color: #f7e200;
+  height: 70px;
   justify-content: center;
   justify-items: center;
-  margin-top: 40px;
 }
 .menuArtists button {
   text-decoration: none;
   border: none;
   width: 100%;
-  background-color: #f7e200;
+  background-color: hsl(45, 80%, 70%);
 }
 .menuArtists button:focus {
   outline: none;
@@ -177,5 +176,5 @@ background-color: rgb(235, 231, 181);
   background-color: #5890ff;
 }
 .menuActive {
-  background-color: #f8ff92 !important;
+  background-color: hsl(45, 75%, 85%) !important;
 }

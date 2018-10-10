@@ -81,14 +81,14 @@ class App extends Component {
     (filtered[index].artist === 'Salvador Dali') ?
       filtered[index].icon = this.state.icons.daliMouseOverIcon :
       filtered[index].icon = this.state.icons.reneMouseOverIcon;
-    this.setState({ filteredData: filtered })
+    this.setState({ filteredData: filtered, menuOpen: false })
   }
   mouseOutIcon = (index) => {
     let filtered = this.state.filteredData;
     (filtered[index].artist === 'Salvador Dali') ?
       filtered[index].icon = this.state.icons.daliDefaultIcon :
       filtered[index].icon = this.state.icons.reneDefaultIcon;
-    this.setState({ filteredData: filtered })
+    this.setState({ filteredData: filtered, menuOpen: false })
   }
   toogleInfoWindow = (index) => {
     let filtered = this.state.filteredData;
@@ -114,7 +114,10 @@ class App extends Component {
 
   onZoomChanged = () => {
     this.setState({ animation: 2 })
-    this.setState({ animation: 1 })
+    this.setState({
+      animation: 1,
+      menuOpen: false
+    })
   }
 
   openMarker = (index) => {

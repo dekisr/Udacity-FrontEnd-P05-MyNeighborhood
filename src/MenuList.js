@@ -13,6 +13,7 @@ class MenuList extends Component {
         pageWrapId={"page-wrap"} outerContainerId={"outer-container"}
         isOpen={this.props.isOpen}
       >
+        <div className="menuTop"></div>
         <div className="menuArtists">
           <button className={this.props.activeMenu === 'All' && 'menuActive'}
             onClick={() => this.props.filterData('All')}>All</button>
