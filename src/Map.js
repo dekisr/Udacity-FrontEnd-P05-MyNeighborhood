@@ -11,7 +11,7 @@ class Map extends Component {
     animation: PropTypes.number.isRequired,
     mouseOverIcon: PropTypes.func.isRequired,
     mouseOutIcon: PropTypes.func.isRequired,
-    toogleInfoWindow: PropTypes.func.isRequired,
+    toggleInfoWindow: PropTypes.func.isRequired,
     onZoomChanged: PropTypes.func.isRequired
   }
 
@@ -20,11 +20,13 @@ class Map extends Component {
   }
 
   componentDidMount() {
+    // Catch authentication errors
     window.gm_authFailure = () => {
       this.setState({ mapError: true });
     };
   }
 
+  // Fit all markers on screen at first load
   fitMarkers = (map) => {
     if (!map) return
     const bounds = new window.google.maps.LatLngBounds();
@@ -33,8 +35,8 @@ class Map extends Component {
   }
 
   render() {
-    const { artData, filteredData, mapCenter, animation, mouseOverIcon, mouseOutIcon, toogleInfoWindow, onZoomChanged } = this.props
-    if(this.state.mapError === true) {
+    const { artData, filteredData, mapCenter, animation, mouseOverIcon, mouseOutIcon, toggleInfoWindow, onZoomChanged } = this.props
+    if (this.state.mapError === true) {
       return <DataFailed />
     } else {
       return (
@@ -45,7 +47,7 @@ class Map extends Component {
           animation={animation}
           mouseOverIcon={mouseOverIcon}
           mouseOutIcon={mouseOutIcon}
-          toogleInfoWindow={toogleInfoWindow}
+          toggleInfoWindow={toggleInfoWindow}
           onZoomChanged={onZoomChanged}
           fitMarkers={this.fitMarkers}
           isMarkerShown

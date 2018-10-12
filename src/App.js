@@ -29,30 +29,32 @@ class App extends Component {
     loaded: false
   }
   componentDidMount() {
-    this.testFetch()
+    this.ftFetch()
   }
-  testFetch() {
-    const url = 'https://www.googleapis.com/fusiontables/v2/query?sql=SELECT*%20FROM%201EoMGaJVXfDZdNy8YLMXdVpVaxM2rdurHVgY4X10P&key=AIzaSyAszEoz4HsD1TwV_9pZYzHJW3Fvd158C_M';
+  // Fetch necessary data from a custom Google Fusion Table
+  ftFetch() {
+    const url = 'https://www.googleapis.com/fusiontables/v2/query?sql=SELECT*%20FROM%201KrfTm26-Wc2yQmIfW8YH5oUw4aeIC5eL76Yebgnc&key=AIzaSyAszEoz4HsD1TwV_9pZYzHJW3Fvd158C_M';
     fetch(url)
       .then(resp => resp.json())
       .then(data => {
         let artData = [];
+        // Mounts the objects
         data.rows.map((item, index) => {
-          // mount objects //
+          // Set the icon according to the artist
           const icon = (item[0] === 'Salvador Dali') ? this.state.icons.daliDefaultIcon : this.state.icons.reneDefaultIcon;
           const obj = {
             id: index,
             artist: item[0],
             title: item[1],
             year: item[2],
-            lat: item[3],
-            lng: item[4],
-            img: item[5],
-            wiki: item[6],
+            loc: item[3],
+            lat: item[4],
+            lng: item[5],
+            img: item[6],
+            wiki: item[7],
             icon: icon,
             isOpen: false
           }
-          //////////////////
           return artData.push(obj)
         })
         return artData
@@ -70,6 +72,7 @@ class App extends Component {
         })
       })
   }
+  //Filter the data according to the selected artist
   filterData = (name) => {
     this.state.artData.map((item) => item.isOpen = false)
     let filtered;
@@ -97,28 +100,22 @@ class App extends Component {
       filtered[index].icon = this.state.icons.reneDefaultIcon;
     this.setState({ filteredData: filtered, menuOpen: false })
   }
-  toogleInfoWindow = (index) => {
+  toggleInfoWindow = (index) => {
     let filtered = this.state.filteredData;
-    let zoom = this.state.zoom;
-    // (filtered[index].isOpen === true) ?
-    //   filtered[index].isOpen = false :
-    //   filtered[index].isOpen = true;
-
-    if (filtered[index].isOpen === true) {
-      filtered[index].isOpen = false;
-    } else {
-      filtered[index].isOpen = true;
-    }
+    // Open & Close the Info Box when the marker is clicked
+    (filtered[index].isOpen === true) ?
+      (filtered[index].isOpen = false) :
+      (filtered[index].isOpen = true);
+    // Prevent to open multiple boxes
     for (let i = 0; i < filtered.length; i++) {
       (filtered[i] !== filtered[index]) && (filtered[i].isOpen = false);
     }
     this.setState({
       filteredData: filtered,
-      mapCenter: { lat: filtered[index].lat, lng: filtered[index].lng },
-      zoom: zoom
+      mapCenter: { lat: filtered[index].lat, lng: filtered[index].lng }
     })
   }
-
+  // Prevent markers to stop bouncing after zoom changes
   onZoomChanged = () => {
     this.setState({ animation: 2 })
     this.setState({
@@ -126,7 +123,7 @@ class App extends Component {
       menuOpen: false
     })
   }
-
+  // Open and center the selected marker from menu
   openMarker = (index) => {
     let filtered = this.state.filteredData;
     filtered[index].isOpen = true;
@@ -165,7 +162,7 @@ class App extends Component {
                   animation={this.state.animation}
                   mouseOverIcon={this.mouseOverIcon}
                   mouseOutIcon={this.mouseOutIcon}
-                  toogleInfoWindow={this.toogleInfoWindow}
+                  toggleInfoWindow={this.toggleInfoWindow}
                   onZoomChanged={this.onZoomChanged}
                 />
               </ErrorBoundary>

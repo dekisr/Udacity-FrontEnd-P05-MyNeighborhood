@@ -11,11 +11,11 @@ class MenuList extends Component {
     isOpen: PropTypes.bool.isRequired
   }
   render() {
-    const {filterData, filteredData, activeMenu, openMarker, isOpen} = this.props;
+    const { filterData, filteredData, activeMenu, openMarker, isOpen } = this.props;
     return (
       <Menu
-        bodyClassName={"my-class"}
-        pageWrapId={"page-wrap"} outerContainerId={"outer-container"}
+        outerContainerId={"outer-container"}
+        pageWrapId={"page-wrap"}
         isOpen={isOpen}
       >
         <div className="menuTop"></div>

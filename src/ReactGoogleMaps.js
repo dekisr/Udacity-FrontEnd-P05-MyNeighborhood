@@ -3,6 +3,7 @@ import { withScriptjs, withGoogleMap, GoogleMap } from "react-google-maps"
 import Markers from './Markers';
 import mapStyle from './assets/mapStyle.json'
 
+// Mounts the Map object using react-google-maps package
 const ReactGoogleMaps = withScriptjs(withGoogleMap((props) => {
   return (
     <GoogleMap
@@ -19,12 +20,11 @@ const ReactGoogleMaps = withScriptjs(withGoogleMap((props) => {
     >
       {props.isMarkerShown &&
         <Markers
-          artData={props.artData}
           filteredData={props.filteredData}
           animation={props.animation}
           mouseOverIcon={props.mouseOverIcon}
           mouseOutIcon={props.mouseOutIcon}
-          toogleInfoWindow={props.toogleInfoWindow}
+          toggleInfoWindow={props.toggleInfoWindow}
         />}
     </GoogleMap>
   )

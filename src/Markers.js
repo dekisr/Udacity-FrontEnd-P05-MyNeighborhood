@@ -6,15 +6,15 @@ import InfoBoxContent from './InfoBoxContent';
 
 class Markers extends Component {
   static propTypes = {
-    artData: PropTypes.array.isRequired,
     filteredData: PropTypes.array.isRequired,
     animation: PropTypes.number.isRequired,
     mouseOverIcon: PropTypes.func.isRequired,
     mouseOutIcon: PropTypes.func.isRequired,
-    toogleInfoWindow: PropTypes.func.isRequired
+    toggleInfoWindow: PropTypes.func.isRequired
   }
   render() {
-    const { artData, filteredData, animation, mouseOverIcon, mouseOutIcon, toogleInfoWindow } = this.props;
+    const { filteredData, animation, mouseOverIcon, mouseOutIcon, toggleInfoWindow } = this.props;
+    // Create a marker for each row fetched from Fusion Tables
     const markers = filteredData.map((marker, index) => (
       <Marker
         key={index}
@@ -22,7 +22,7 @@ class Markers extends Component {
         icon={marker.icon}
         onMouseOver={() => mouseOverIcon(index)}
         onMouseOut={() => mouseOutIcon(index)}
-        onClick={() => toogleInfoWindow(index)}
+        onClick={() => toggleInfoWindow(index)}
         animation={animation}
         defaultAnimation={1}
       >
@@ -34,7 +34,6 @@ class Markers extends Component {
             }}
           >
             <InfoBoxContent
-              artData={artData}
               itemData={marker}
             />
           </InfoBox>

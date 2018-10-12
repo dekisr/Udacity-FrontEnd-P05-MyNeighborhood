@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import DataFailed from './DataFailed';
 
 class ErrorBoundary extends Component {
