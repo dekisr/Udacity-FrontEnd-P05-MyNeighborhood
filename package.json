@@ -2,6 +2,7 @@
   "name": "neighborhoodmap",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://dekisr.github.io/Udacity-FrontEnd-P05-MyNeighborhood",
   "dependencies": {
     "react": "^16.5.2",
     "react-burger-menu": "^2.5.3",
