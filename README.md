@@ -2,14 +2,14 @@
 
 # My Neighborhood
 
-## [**_[ Check the live project ]_**](https://dekisr.github.io/Udacity-FrontEnd-P05-MyNeighborhood/)
+## [**_[ Check the live project ]_**](https://dekisr.github.io/Udacity-FrontEnd-P05-MyNeighborhood)
 
 ### Project Overview
 The goal was to create a project from scratch using React and Google Maps JavaScript API. Besides that, some requirements was to add functionality using third-party APIs to provide information when a map marker or list view entry is clicked; Implement a list view of the set of locations; Provide a filter option; Display map markers identifying at least 5 locations; Overall, the application's interface should be intuitive to use; All data API's used in the application should load asynchronously, and errors should be handled gracefully;
 
 ## About
 **Content:**  
-I decided to show some of my favorites René Magritte and Salvador Dalí paintings from Surrealism movement(1920s). I hope to see them in person someday. :pray:  
+I decided to show some of my favorites René Magritte and Salvador Dalí paintings from Surrealism movement(1920s). I hope to see all these paintings in person someday. :pray:  
 There is a mark for each of these paintings and also two marks in the middle of nowhere to say something about the artists. The project fetches data from a custom Google Fusion Tables, Wikipedia from Wikimedia REST API and Maps from Google Maps JavaScript API. The Service Worker used here is the one provided by Create React App. :thumbsup:
 
 **Tools:**  
