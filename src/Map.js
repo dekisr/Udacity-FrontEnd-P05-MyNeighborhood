@@ -13,7 +13,7 @@ class Map extends Component {
     mouseOutIcon: PropTypes.func.isRequired,
     toggleInfoWindow: PropTypes.func.isRequired,
     onZoomChanged: PropTypes.func.isRequired,
-    closeTest: PropTypes.func.isRequired
+    closeIB: PropTypes.func.isRequired
   }
 
   state = {
@@ -36,7 +36,7 @@ class Map extends Component {
   }
 
   render() {
-    const { artData, filteredData, mapCenter, animation, mouseOverIcon, mouseOutIcon, toggleInfoWindow, onZoomChanged } = this.props
+    const { artData, filteredData, mapCenter, animation, mouseOverIcon, mouseOutIcon, toggleInfoWindow, onZoomChanged, closeIB } = this.props
     if (this.state.mapError === true) {
       return <DataFailed />
     } else {
@@ -50,13 +50,13 @@ class Map extends Component {
           mouseOutIcon={mouseOutIcon}
           toggleInfoWindow={toggleInfoWindow}
           onZoomChanged={onZoomChanged}
-          closeTest={this.props.closeTest}
+          closeIB={closeIB}
           fitMarkers={this.fitMarkers}
           isMarkerShown
           googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=AIzaSyAszEoz4HsD1TwV_9pZYzHJW3Fvd158C_M"
           loadingElement={<div style={{ height: `100%` }} />}
-          containerElement={<div className="mapContainer" />}
-          mapElement={<div className="mapElement" />}
+          containerElement={<div className="mapContainer" aria-label="Container for the Map" />}
+          mapElement={<div className="mapElement" role="application" aria-label="Google Maps" />}
         />
       )
     }

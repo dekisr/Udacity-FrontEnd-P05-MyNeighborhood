@@ -20,7 +20,7 @@ class MenuList extends Component {
         isOpen={isOpen}
         customBurgerIcon={<img src={burgerIcon} alt="" />}
       >
-        <div className="menuTop"></div>
+        <div className="menuTop" aria-label="Menu Image"></div>
         <div className="menuArtists">
           <button className={activeMenu === 'All' ? 'menuActive' : undefined}
             onClick={() => filterData('All')}>All</button>
@@ -29,7 +29,7 @@ class MenuList extends Component {
           <button className={activeMenu === 'Rene Magritte' ? 'menuActive' : undefined}
             onClick={() => filterData('Rene Magritte')}>René Magritte</button>
         </div>
-        <ul>
+        <ul aria-label="Paintings List">
           {filteredData.map((item, index) => {
             return (
               <li key={index} onClick={() => openMarker(index)}>{item.title}</li>

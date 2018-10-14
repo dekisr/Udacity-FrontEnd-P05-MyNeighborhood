@@ -123,7 +123,8 @@ class App extends Component {
       menuOpen: false
     })
   }
-  closeTest = () => {
+  // Close info boxes when click outside
+  closeIB = () => {
     const artData = this.state.artData;
     artData.map((item) => item.isOpen = false);
     this.setState({ artData })
@@ -169,7 +170,7 @@ class App extends Component {
                   mouseOutIcon={this.mouseOutIcon}
                   toggleInfoWindow={this.toggleInfoWindow}
                   onZoomChanged={this.onZoomChanged}
-                  closeTest={this.closeTest}
+                  closeIB={this.closeIB}
                 />
               </ErrorBoundary>
             </main>

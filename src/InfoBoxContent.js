@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import Loading from './Loading';
-import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 class InfoBoxContent extends Component {
   state = {
@@ -46,13 +45,13 @@ class InfoBoxContent extends Component {
           <div className="painting">
             <img src={itemData.img} alt={itemData.title} />
           </div>
-          <section className="info">
+          <section className="info" aria-label={`Info about ${itemData.title} painting`}>
             <h2>{itemData.title}</h2>
             <p>Year: <b>{itemData.year}</b></p>
             <p>Located at: <b>{itemData.loc}</b></p>
             <p>Image: <b>wikiart.org</b></p>
           </section>
-          <section className="wiki">
+          <section className="wiki" aria-label="Text from Wikipedia">
             <h3>WIKIPEDIA</h3>
             {(this.state.dataFailed === true) && <span className="error">FAILED TO FETCH DATA FROM WIKIPEDIA</span>}
             <p>{this.state.data}</p>
