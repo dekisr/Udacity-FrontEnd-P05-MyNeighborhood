@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=Bree+Serif");
+@import url("https://fonts.googleapis.com/css?family=Bree+Serif|Lobster");
 #palette01 {
   background-color:
     hsl(0, 100%, 100%),
@@ -140,8 +140,8 @@ body {
 /* react-burger-menu from https://github.com/negomi/react-burger-menu */
 .bm-burger-button {
   position: fixed;
-  left: 1rem;
   top: 1rem;
+  left: 1rem;
   width: 2.5rem;
   height: 2.5rem;
   opacity: .8;
@@ -151,11 +151,14 @@ body {
   opacity: 1;
 }
 .bm-cross-button {
-  width: 34px;
-  height: 34px;
+  margin-top: .5rem;
+  margin-right: .5rem;
+  width: 1.5rem !important;
+  height: 1.5rem !important;
+  opacity: .8;
 }
-.bm-cross {
-  background: hsl(0, 35%, 5%);
+.bm-cross-button:hover {
+  opacity: 1;
 }
 .bm-menu {
   width: 100% !important;
@@ -179,9 +182,17 @@ body {
 
 /* menu */
 .menuTop {
-  display: block;
+  display: grid !important;
+  grid-template-columns: 80px auto;
+  align-content: center;
+  justify-items: center;
+  align-items: center;
   height: 10rem;
+  padding: 1rem;
   background-color: hsl(190, 90%, 55%);
+  background: url(assets/images/menutop_bg.jpg);
+  background-repeat: no-repeat;
+  background-size: contain;
 }
 .menuArtists {
   display: grid !important;
@@ -230,6 +241,41 @@ li:hover {
   cursor: pointer;
   color: hsl(0, 35%, 5%);
   background-color: hsl(0, 100%, 90%);
+}
+
+/* logo (absolute units for 300px div) */
+.logoImage {
+  position: relative;
+  right: -10px;
+  width: 80px;
+  z-index: 123;
+}
+.logoText {
+  position: relative;
+  left: -10px;
+}
+.titleOne,
+.titleTwo,
+.titleThree {
+  font-family: 'Lobster', cursive;
+  font-size: 16px;
+  font-weight: 900;
+  line-height: .9;
+  text-shadow: 1px 1px 0 hsl(0, 35%, 5%);
+  color: hsl(0, 100%, 100%);
+}
+.titleOne {
+  transform: rotate(-25deg) translate(0px, -38px);
+}
+.titleTwo {
+  font-size: 32px;
+}
+.titleThree {
+  justify-self: end;
+  text-align: right;
+  font-weight: 300;
+  text-shadow: none;
+  color: hsl(0, 35%, 5%);
 }
 
 /* scrollbar */
@@ -336,7 +382,7 @@ li:hover {
   border: 0;
   outline: 0;
   text-decoration: none;
-  color: hsl(0, 100%, 100%);
+  color: hsl(0, 100%, 90%);
   border-radius: .3rem;
   background-color: hsl(355, 80%, 60%);
 }
