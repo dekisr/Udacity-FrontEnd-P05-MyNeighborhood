@@ -293,6 +293,23 @@ li:hover {
   background: rgba(245, 206, 206, .7);
 }
 
+/* footer */
+.footer {
+  display: block;
+  text-align: center;
+  cursor: default;
+  font-size: .8rem;
+  font-weight: 300;
+  opacity: .7;
+}
+.footer:hover {
+  opacity: 1;
+}
+.footer a, .footer a:hover, .footer a:active {
+  font-weight: 900;
+  color: hsl(0, 100%, 90%);
+}
+
 /* loading */
 .loading {
   position: fixed;

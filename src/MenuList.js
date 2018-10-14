@@ -47,9 +47,10 @@ class MenuList extends Component {
           })
           }
         </ul>
+        <span className="footer" aria-label="Author">Udacity My Neighborhood Project <br /> made by <a href="https://github.com/dekisr" target="_blank" rel="noopener noreferrer">@dekisr</a></span>
       </Menu>
-    );
-  }
-}
-
+        );
+      }
+    }
+    
 export default MenuList;
