@@ -110,10 +110,9 @@ class App extends Component {
     for (let i = 0; i < filtered.length; i++) {
       (filtered[i] !== filtered[index]) && (filtered[i].isOpen = false);
     }
-    this.setState({
-      filteredData: filtered,
-      mapCenter: { lat: filtered[index].lat, lng: filtered[index].lng }
-    })
+    // Should not center when closing
+    filtered[index].isOpen && this.setState({ mapCenter: { lat: filtered[index].lat, lng: filtered[index].lng } })
+    this.setState({ filteredData: filtered })
   }
   // Prevent markers to stop bouncing after zoom changes
   onZoomChanged = () => {

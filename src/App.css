@@ -2,7 +2,6 @@
 #palette01 {
   background-color:
     hsl(0, 100%, 100%),
-
     hsl(0, 35%, 5%),
     hsl(0, 100%, 90%),
     hsl(355, 80%, 60%),
@@ -151,9 +150,6 @@ body {
 .bm-burger-button:hover {
   opacity: 1;
 }
-.bm-burger-bars {
-  background: #373a47;
-}
 .bm-cross-button {
   width: 34px;
   height: 34px;
@@ -167,11 +163,8 @@ body {
   white-space: normal !important;
   overflow-y: auto !important;
   font-size: 1rem;
-  background-color: hsl(355, 80%, 60%);
-}
-.bm-morph-shape {
-  fill: hsl(355, 80%, 60%);
   box-shadow: 1px 0px 4px hsla(0, 35%, 5%, .3);
+  background-color: hsl(355, 80%, 60%);
 }
 .bm-item-list {
   width: 100% !important;
