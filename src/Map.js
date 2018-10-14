@@ -12,7 +12,8 @@ class Map extends Component {
     mouseOverIcon: PropTypes.func.isRequired,
     mouseOutIcon: PropTypes.func.isRequired,
     toggleInfoWindow: PropTypes.func.isRequired,
-    onZoomChanged: PropTypes.func.isRequired
+    onZoomChanged: PropTypes.func.isRequired,
+    closeTest: PropTypes.func.isRequired
   }
 
   state = {
@@ -49,6 +50,7 @@ class Map extends Component {
           mouseOutIcon={mouseOutIcon}
           toggleInfoWindow={toggleInfoWindow}
           onZoomChanged={onZoomChanged}
+          closeTest={this.props.closeTest}
           fitMarkers={this.fitMarkers}
           isMarkerShown
           googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=AIzaSyAszEoz4HsD1TwV_9pZYzHJW3Fvd158C_M"

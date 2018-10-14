@@ -4,10 +4,10 @@ import DataFailed from './DataFailed';
 import ErrorBoundary from './ErrorBoundary';
 import Map from './Map';
 import MenuList from './MenuList';
-import daliMarker from './assets/icons/daliMarker.png'
-import daliMarkerMouseOver from './assets/icons/daliMarkerMouseOver.png'
-import reneMarker from './assets/icons/reneMarker.png'
-import reneMarkerMouseOver from './assets/icons/reneMarkerMouseOver.png'
+import daliMarker from './assets/icons/daliMarker.png';
+import daliMarkerMouseOver from './assets/icons/daliMarkerMouseOver.png';
+import reneMarker from './assets/icons/reneMarker.png';
+import reneMarkerMouseOver from './assets/icons/reneMarkerMouseOver.png';
 import './App.css';
 
 
@@ -123,6 +123,11 @@ class App extends Component {
       menuOpen: false
     })
   }
+  closeTest = () => {
+    const artData = this.state.artData;
+    artData.map((item) => item.isOpen = false);
+    this.setState({ artData })
+  }
   // Open and center the selected marker from menu
   openMarker = (index) => {
     let filtered = this.state.filteredData;
@@ -164,6 +169,7 @@ class App extends Component {
                   mouseOutIcon={this.mouseOutIcon}
                   toggleInfoWindow={this.toggleInfoWindow}
                   onZoomChanged={this.onZoomChanged}
+                  closeTest={this.closeTest}
                 />
               </ErrorBoundary>
             </main>

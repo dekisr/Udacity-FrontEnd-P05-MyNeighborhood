@@ -17,6 +17,7 @@ const ReactGoogleMaps = withScriptjs(withGoogleMap((props) => {
       ref={props.fitMarkers}
       center={props.mapCenter}
       onZoomChanged={props.onZoomChanged}
+      onClick={props.closeTest}
     >
       {props.isMarkerShown &&
         <Markers

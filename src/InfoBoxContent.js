@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Loading from './Loading';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 class InfoBoxContent extends Component {
   state = {

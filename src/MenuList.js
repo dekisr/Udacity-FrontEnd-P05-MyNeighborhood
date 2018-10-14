@@ -1,6 +1,7 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import { elastic as Menu } from 'react-burger-menu'
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { elastic as Menu } from 'react-burger-menu';
+import burgerIcon from './assets/icons/menu_burger.svg';
 
 class MenuList extends Component {
   static propTypes = {
@@ -17,6 +18,7 @@ class MenuList extends Component {
         outerContainerId={"outer-container"}
         pageWrapId={"page-wrap"}
         isOpen={isOpen}
+        customBurgerIcon={<img src={burgerIcon} alt="" />}
       >
         <div className="menuTop"></div>
         <div className="menuArtists">
