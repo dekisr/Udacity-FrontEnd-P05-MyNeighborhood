@@ -1,7 +1,7 @@
 import React from 'react';
-import { withScriptjs, withGoogleMap, GoogleMap } from "react-google-maps"
+import { withScriptjs, withGoogleMap, GoogleMap } from "react-google-maps";
 import Markers from './Markers';
-import mapStyle from './assets/mapStyle.json'
+import mapStyle from './assets/mapStyle.json';
 
 // Mounts the Map object using react-google-maps package
 const ReactGoogleMaps = withScriptjs(withGoogleMap((props) => {

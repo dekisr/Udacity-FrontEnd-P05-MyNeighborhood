@@ -24,7 +24,7 @@ class MenuList extends Component {
         customCrossIcon={<img src={crossIcon} alt="Close Icon" />}
       >
         <div className="menuTop" aria-label="Logo container">
-          <img src={logo} className="logoImage" alt="Magritte's egg with Dali's moustache"/>
+          <img src={logo} className="logoImage" alt="Magritte's egg with Dali's moustache" />
           <div className="logoText" aria-label="Container logo text">
             <p className="titleOne">My</p>
             <p className="titleTwo">Neighborhood</p>

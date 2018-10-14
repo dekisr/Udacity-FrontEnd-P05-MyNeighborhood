@@ -189,8 +189,9 @@ body {
   align-items: center;
   height: 10rem;
   padding: 1rem;
+  cursor: default;
   background-color: hsl(190, 90%, 55%);
-  background: url(assets/images/menutop_bg.jpg);
+  background: url(./images/menutop_bg.jpg);
   background-repeat: no-repeat;
   background-size: contain;
 }
@@ -357,7 +358,7 @@ li:hover {
   margin: 1rem;
   font-size: 0;
   opacity: .8;
-  background-image: url(assets/images/error.svg);
+  background-image: url(./images/error.svg);
   background-repeat: no-repeat;
   background-position: center;
 }

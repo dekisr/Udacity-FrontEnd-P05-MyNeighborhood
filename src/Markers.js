@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types'
-import { Marker } from "react-google-maps"
+import PropTypes from 'prop-types';
+import { Marker } from "react-google-maps";
 import InfoBox from 'react-google-maps/lib/components/addons/InfoBox';
 import InfoBoxContent from './InfoBoxContent';
 

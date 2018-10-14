@@ -8,7 +8,7 @@ import daliMarker from './assets/icons/daliMarker.png';
 import daliMarkerMouseOver from './assets/icons/daliMarkerMouseOver.png';
 import reneMarker from './assets/icons/reneMarker.png';
 import reneMarkerMouseOver from './assets/icons/reneMarkerMouseOver.png';
-import './App.css';
+import './assets/App.css';
 
 
 class App extends Component {
