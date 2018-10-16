@@ -41,17 +41,17 @@ class InfoBoxContent extends Component {
     } else {
       return (
         // Mounts the Info Box content with data from custom Google Fusion Tables and Wikipedia REST Api 
-        <div className="ibContent">
-          <div className="painting">
+        <div tabIndex="0" className="ibContent">
+          <div tabIndex="0" className="painting">
             <img src={itemData.img} alt={itemData.title} />
           </div>
-          <section className="info" aria-label={`Info about ${itemData.title} painting`}>
+          <section tabIndex="0" className="info" aria-label={`Info about ${itemData.title} painting`}>
             <h2>{itemData.title}</h2>
             <p>Year: <b>{itemData.year}</b></p>
             <p>Located at: <b>{itemData.loc}</b></p>
             <p>Image: <b>wikiart.org</b></p>
           </section>
-          <section className="wiki" aria-label="Text from Wikipedia">
+          <section tabIndex="0" className="wiki" aria-label="Text from Wikipedia">
             <h3>WIKIPEDIA</h3>
             {(this.state.dataFailed === true) && <span className="error">FAILED TO FETCH DATA FROM WIKIPEDIA</span>}
             <p>{this.state.data}</p>

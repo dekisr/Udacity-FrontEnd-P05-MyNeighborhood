@@ -213,9 +213,6 @@ body {
   border: none;
   background-color: hsl(45, 80%, 70%);
 }
-.menuArtists button:focus {
-  outline: none;
-}
 .menuArtists button:hover {
   background-color: hsl(185, 50%, 50%);
 }
