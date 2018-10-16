@@ -73,7 +73,8 @@ class App extends Component {
   }
   //Filter the data according to the selected artist
   filterData = (name) => {
-    const artData = this.state.artData.map((item) => item.isOpen = false)
+    let artData = this.state.artData;
+    artData.forEach((item) => item.isOpen = false)
     this.setState({artData})
     let filtered;
     name === 'All' ?
