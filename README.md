@@ -24,14 +24,14 @@ You can clone or download this repository.
 > npm install  
 > npm start
 ### To test build files:
-> remove the **line 5**: [```"homepage": "https://dekisr.github.io/Udacity-FrontEnd-P05-MyNeighborhood",```] from the **package.json** file  
-> npm run build  
-> cd build  
-> use some tool to serve a local server like [**_http-server_**](https://github.com/indexzero/http-server)  
+- remove the **line 5**: [```"homepage": "https://dekisr.github.io/Udacity-FrontEnd-P05-MyNeighborhood",```] from the **package.json** file  
+- npm run build  
+- cd build  
+- use some tool to serve a local server like [**_http-server_**](https://github.com/indexzero/http-server)  
 > E.g.  
 > `npm install http-server -g`  
 > `http-server -p 8000`  
-> You can change the **8000** to any port you want
+> You can change the 8000 to any port you want
 
 ### Resources
 * [Udacity - Web Front-End Avançado](https://br.udacity.com/course/front-end-web-developer-nanodegree--nd001-br-advanced)
