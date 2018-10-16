@@ -37,9 +37,8 @@ class App extends Component {
     fetch(url)
       .then(resp => resp.json())
       .then(data => {
-        let artData = [];
         // Mounts the objects
-        data.rows.map((item, index) => {
+        let artData = data.rows.map((item, index) => {
           // Set the icon according to the artist
           const icon = (item[0] === 'Salvador Dali') ? this.state.icons.daliDefaultIcon : this.state.icons.reneDefaultIcon;
           const obj = {
@@ -55,7 +54,7 @@ class App extends Component {
             icon: icon,
             isOpen: false
           }
-          return artData.push(obj)
+          return obj
         })
         return artData
       }).then(resp => {
@@ -74,7 +73,8 @@ class App extends Component {
   }
   //Filter the data according to the selected artist
   filterData = (name) => {
-    this.state.artData.map((item) => item.isOpen = false)
+    const artData = this.state.artData.map((item) => item.isOpen = false)
+    this.setState({artData})
     let filtered;
     name === 'All' ?
       filtered = this.state.artData :
