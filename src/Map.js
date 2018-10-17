@@ -8,7 +8,6 @@ class Map extends Component {
     artData: PropTypes.array.isRequired,
     filteredData: PropTypes.array.isRequired,
     mapCenter: PropTypes.object.isRequired,
-    animation: PropTypes.number.isRequired,
     mouseOverIcon: PropTypes.func.isRequired,
     mouseOutIcon: PropTypes.func.isRequired,
     toggleInfoWindow: PropTypes.func.isRequired,
@@ -36,7 +35,7 @@ class Map extends Component {
   }
 
   render() {
-    const { artData, filteredData, mapCenter, animation, mouseOverIcon, mouseOutIcon, toggleInfoWindow, onZoomChanged, closeIB } = this.props
+    const { artData, filteredData, mapCenter, mouseOverIcon, mouseOutIcon, toggleInfoWindow, onZoomChanged, closeIB } = this.props
     if (this.state.mapError === true) {
       return <DataFailed />
     } else {
@@ -45,7 +44,6 @@ class Map extends Component {
           artData={artData}
           filteredData={filteredData}
           mapCenter={mapCenter}
-          animation={animation}
           mouseOverIcon={mouseOverIcon}
           mouseOutIcon={mouseOutIcon}
           toggleInfoWindow={toggleInfoWindow}

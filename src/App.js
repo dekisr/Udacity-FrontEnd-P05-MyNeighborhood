@@ -22,7 +22,6 @@ class App extends Component {
       reneDefaultIcon: `${reneMarker}`,
       reneMouseOverIcon: `${reneMarkerMouseOver}`
     },
-    animation: 1,
     activeMenu: 'All',
     menuOpen: false,
     ftFailed: false,
@@ -52,7 +51,8 @@ class App extends Component {
             img: item[6],
             wiki: item[7],
             icon: icon,
-            isOpen: false
+            isOpen: false,
+            animation: 1
           }
           return obj
         })
@@ -85,6 +85,7 @@ class App extends Component {
       activeMenu: name,
       menuOpen: true
     })
+    this.changeAnimation()
   }
   // Markers
   mouseOverIcon = (index) => {
@@ -114,20 +115,14 @@ class App extends Component {
     // Should not center when closing
     filtered[index].isOpen && this.setState({ mapCenter: { lat: filtered[index].lat, lng: filtered[index].lng } })
     this.setState({ filteredData: filtered })
-  }
-  // Prevent markers to stop bouncing after zoom changes
-  onZoomChanged = () => {
-    this.setState({ animation: 2 })
-    this.setState({
-      animation: 1,
-      menuOpen: false
-    })
+    this.changeAnimation()
   }
   // Close info boxes when click outside
   closeIB = () => {
-    const artData = this.state.artData;
-    artData.map((item) => item.isOpen = false);
+    let artData = this.state.artData;
+    artData.forEach((item) => item.isOpen = false);
     this.setState({ artData })
+    this.changeAnimation()
   }
   // Open and center the selected marker from menu
   openMarker = (index) => {
@@ -141,6 +136,24 @@ class App extends Component {
       mapCenter: { lat: filtered[index].lat, lng: filtered[index].lng },
       menuOpen: false
     })
+    this.changeAnimation()
+  }
+  // Change the marker animation if it's selected
+  changeAnimation = () => {
+    let artData = this.state.artData;
+    artData.forEach((item) => {
+      item.isOpen ?
+      item.animation = 2 :
+      item.animation = 1
+    })
+    this.setState({artData})
+  }
+  // Prevent bug to stop animations when changing the zoom
+  onZoomChanged = () => {
+    let artData = this.state.artData
+    artData.forEach((item) => item.animation = 2)
+    this.setState({artData})
+    this.changeAnimation()
   }
 
   render() {
@@ -165,7 +178,6 @@ class App extends Component {
                   artData={this.state.artData}
                   filteredData={this.state.filteredData}
                   mapCenter={this.state.mapCenter}
-                  animation={this.state.animation}
                   mouseOverIcon={this.mouseOverIcon}
                   mouseOutIcon={this.mouseOutIcon}
                   toggleInfoWindow={this.toggleInfoWindow}

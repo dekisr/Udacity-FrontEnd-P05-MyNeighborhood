@@ -22,7 +22,6 @@ const ReactGoogleMaps = withScriptjs(withGoogleMap((props) => {
       {props.isMarkerShown &&
         <Markers
           filteredData={props.filteredData}
-          animation={props.animation}
           mouseOverIcon={props.mouseOverIcon}
           mouseOutIcon={props.mouseOutIcon}
           toggleInfoWindow={props.toggleInfoWindow}
