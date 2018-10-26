@@ -114,7 +114,7 @@ class App extends Component {
     }
     // Should not center when closing
     filtered[index].isOpen && this.setState({ mapCenter: { lat: filtered[index].lat, lng: filtered[index].lng } })
-    this.setState({ filteredData: filtered })
+    this.setState({ filteredData: filtered, menuOpen: false })
     this.changeAnimation()
   }
   // Close info boxes when click outside
