@@ -37,7 +37,7 @@ You can clone or download this repository.
 * [Udacity - Web Front-End Avançado](https://br.udacity.com/course/front-end-web-developer-nanodegree--nd001-br-advanced)
 * [Google Maps JavaScript API](https://developers.google.com/maps/documentation/javascript)
 * [Google Fusion Tables](https://developers.google.com/fusiontables)
-* [Wikimedia REST API](https://en.wikipedia.org/api/rest_v1)
+* [Wikimedia REST API](https://en.wikipedia.org/api/rest_v1/)
 * [Create React App](https://github.com/facebook/create-react-app)
 * [React Google Maps](https://github.com/tomchentw/react-google-maps)
 * [React Burger Menu](https://github.com/negomi/react-burger-menu)
