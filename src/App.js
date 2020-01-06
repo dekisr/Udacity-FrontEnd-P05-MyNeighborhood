@@ -1,15 +1,14 @@
-import React, { Component } from 'react';
-import Loading from './Loading';
-import DataFailed from './DataFailed';
-import ErrorBoundary from './ErrorBoundary';
-import Map from './Map';
-import MenuList from './MenuList';
-import daliMarker from './assets/icons/daliMarker.png';
-import daliMarkerMouseOver from './assets/icons/daliMarkerMouseOver.png';
-import reneMarker from './assets/icons/reneMarker.png';
-import reneMarkerMouseOver from './assets/icons/reneMarkerMouseOver.png';
-import './assets/App.css';
-
+import React, { Component } from "react"
+import Loading from "./Loading"
+import DataFailed from "./DataFailed"
+import ErrorBoundary from "./ErrorBoundary"
+import Map from "./Map"
+import MenuList from "./MenuList"
+import daliMarker from "./assets/icons/daliMarker.png"
+import daliMarkerMouseOver from "./assets/icons/daliMarkerMouseOver.png"
+import reneMarker from "./assets/icons/reneMarker.png"
+import reneMarkerMouseOver from "./assets/icons/reneMarkerMouseOver.png"
+import "./assets/App.css"
 
 class App extends Component {
   state = {
@@ -22,7 +21,7 @@ class App extends Component {
       reneDefaultIcon: `${reneMarker}`,
       reneMouseOverIcon: `${reneMarkerMouseOver}`
     },
-    activeMenu: 'All',
+    activeMenu: "All",
     menuOpen: false,
     ftFailed: false,
     loaded: false
@@ -32,24 +31,28 @@ class App extends Component {
   }
   // Fetch necessary data from a custom Google Fusion Table
   ftFetch() {
-    const url = 'https://www.googleapis.com/fusiontables/v2/query?sql=SELECT*%20FROM%201KrfTm26-Wc2yQmIfW8YH5oUw4aeIC5eL76Yebgnc&key=AIzaSyAszEoz4HsD1TwV_9pZYzHJW3Fvd158C_M';
+    // const url = 'https://www.googleapis.com/fusiontables/v2/query?sql=SELECT*%20FROM%201KrfTm26-Wc2yQmIfW8YH5oUw4aeIC5eL76Yebgnc&key=AIzaSyAszEoz4HsD1TwV_9pZYzHJW3Fvd158C_M';
+    const url =
+      "https://raw.githubusercontent.com/dekisr/Udacity-FrontEnd-P05-MyNeighborhood/master/assets/data.json"
+    const jsonError = () => {
+      throw new Error("Failed to fetch data.json")
+    }
     fetch(url)
-      .then(resp => resp.json())
-      .then(data => {
+      .then((resp) => {
+        !resp.ok && jsonError()
+        return resp.json()
+      })
+      .then((data) => {
+        console.log(data)
         // Mounts the objects
-        let artData = data.rows.map((item, index) => {
+        let artData = data.paintings.map((item) => {
           // Set the icon according to the artist
-          const icon = (item[0] === 'Salvador Dali') ? this.state.icons.daliDefaultIcon : this.state.icons.reneDefaultIcon;
+          const icon =
+            item.artist === "Salvador Dali"
+              ? this.state.icons.daliDefaultIcon
+              : this.state.icons.reneDefaultIcon
           const obj = {
-            id: index,
-            artist: item[0],
-            title: item[1],
-            year: item[2],
-            loc: item[3],
-            lat: item[4],
-            lng: item[5],
-            img: item[6],
-            wiki: item[7],
+            ...item,
             icon: icon,
             isOpen: false,
             animation: 1
@@ -57,13 +60,15 @@ class App extends Component {
           return obj
         })
         return artData
-      }).then(resp => {
+      })
+      .then((resp) => {
         this.setState({
           artData: resp,
           filteredData: resp,
           loaded: true
         })
-      }).catch(err => {
+      })
+      .catch((err) => {
         console.log(err)
         this.setState({
           ftFailed: true,
@@ -73,13 +78,13 @@ class App extends Component {
   }
   //Filter the data according to the selected artist
   filterData = (name) => {
-    let artData = this.state.artData;
-    artData.forEach((item) => item.isOpen = false)
-    this.setState({artData})
-    let filtered;
-    name === 'All' ?
-      filtered = this.state.artData :
-      filtered = this.state.artData.filter((item => item.artist === name));
+    let artData = this.state.artData
+    artData.forEach((item) => (item.isOpen = false))
+    this.setState({ artData })
+    let filtered
+    name === "All"
+      ? (filtered = this.state.artData)
+      : (filtered = this.state.artData.filter((item) => item.artist === name))
     this.setState({
       filteredData: filtered,
       activeMenu: name,
@@ -89,47 +94,50 @@ class App extends Component {
   }
   // Markers
   mouseOverIcon = (index) => {
-    let filtered = this.state.filteredData;
-    (filtered[index].artist === 'Salvador Dali') ?
-      filtered[index].icon = this.state.icons.daliMouseOverIcon :
-      filtered[index].icon = this.state.icons.reneMouseOverIcon;
+    let filtered = this.state.filteredData
+    filtered[index].artist === "Salvador Dali"
+      ? (filtered[index].icon = this.state.icons.daliMouseOverIcon)
+      : (filtered[index].icon = this.state.icons.reneMouseOverIcon)
     this.setState({ filteredData: filtered, menuOpen: false })
   }
   mouseOutIcon = (index) => {
-    let filtered = this.state.filteredData;
-    (filtered[index].artist === 'Salvador Dali') ?
-      filtered[index].icon = this.state.icons.daliDefaultIcon :
-      filtered[index].icon = this.state.icons.reneDefaultIcon;
+    let filtered = this.state.filteredData
+    filtered[index].artist === "Salvador Dali"
+      ? (filtered[index].icon = this.state.icons.daliDefaultIcon)
+      : (filtered[index].icon = this.state.icons.reneDefaultIcon)
     this.setState({ filteredData: filtered, menuOpen: false })
   }
   toggleInfoWindow = (index) => {
-    let filtered = this.state.filteredData;
+    let filtered = this.state.filteredData
     // Open & Close the Info Box when the marker is clicked
-    (filtered[index].isOpen === true) ?
-      (filtered[index].isOpen = false) :
-      (filtered[index].isOpen = true);
+    filtered[index].isOpen === true
+      ? (filtered[index].isOpen = false)
+      : (filtered[index].isOpen = true)
     // Prevent to open multiple boxes
     for (let i = 0; i < filtered.length; i++) {
-      (filtered[i] !== filtered[index]) && (filtered[i].isOpen = false);
+      filtered[i] !== filtered[index] && (filtered[i].isOpen = false)
     }
     // Should not center when closing
-    filtered[index].isOpen && this.setState({ mapCenter: { lat: filtered[index].lat, lng: filtered[index].lng } })
+    filtered[index].isOpen &&
+      this.setState({
+        mapCenter: { lat: filtered[index].lat, lng: filtered[index].lng }
+      })
     this.setState({ filteredData: filtered, menuOpen: false })
     this.changeAnimation()
   }
   // Close info boxes when click outside
   closeIB = () => {
-    let artData = this.state.artData;
-    artData.forEach((item) => item.isOpen = false);
+    let artData = this.state.artData
+    artData.forEach((item) => (item.isOpen = false))
     this.setState({ artData })
     this.changeAnimation()
   }
   // Open and center the selected marker from menu
   openMarker = (index) => {
-    let filtered = this.state.filteredData;
-    filtered[index].isOpen = true;
+    let filtered = this.state.filteredData
+    filtered[index].isOpen = true
     for (let i = 0; i < filtered.length; i++) {
-      (filtered[i] !== filtered[index]) && (filtered[i].isOpen = false);
+      filtered[i] !== filtered[index] && (filtered[i].isOpen = false)
     }
     this.setState({
       filteredData: filtered,
@@ -140,19 +148,17 @@ class App extends Component {
   }
   // Change the marker animation if it's selected
   changeAnimation = () => {
-    let artData = this.state.artData;
+    let artData = this.state.artData
     artData.forEach((item) => {
-      item.isOpen ?
-      item.animation = 2 :
-      item.animation = 1
+      item.isOpen ? (item.animation = 2) : (item.animation = 1)
     })
-    this.setState({artData})
+    this.setState({ artData })
   }
   // Prevent bug to stop animations when changing the zoom
   onZoomChanged = () => {
     let artData = this.state.artData
-    artData.forEach((item) => item.animation = 2)
-    this.setState({artData})
+    artData.forEach((item) => (item.animation = 2))
+    this.setState({ artData })
     this.changeAnimation()
   }
 
@@ -163,8 +169,8 @@ class App extends Component {
       return <DataFailed />
     } else {
       return (
-        <div className="App">
-          <div id="outer-container">
+        <div className='App'>
+          <div id='outer-container'>
             <MenuList
               filterData={this.filterData}
               filteredData={this.state.filteredData}
@@ -172,7 +178,7 @@ class App extends Component {
               openMarker={this.openMarker}
               isOpen={this.state.menuOpen}
             />
-            <main id="page-wrap">
+            <main id='page-wrap'>
               <ErrorBoundary>
                 <Map
                   artData={this.state.artData}
@@ -188,9 +194,9 @@ class App extends Component {
             </main>
           </div>
         </div>
-      );
+      )
     }
   }
 }
 
-export default App;
+export default App

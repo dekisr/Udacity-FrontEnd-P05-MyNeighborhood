@@ -1,0 +1,147 @@
+{
+  "paintings": [
+    {
+      "id": 0,
+      "artist": "Rene Magritte",
+      "title": "Time transfixed",
+      "year": "1938",
+      "loc": "Art Institute of Chicago",
+      "lat": "41.87958",
+      "lng": "-87.62371",
+      "img": "https://uploads8.wikiart.org/images/rene-magritte/time-transfixed-1938(1).jpg!Large.jpg",
+      "wiki": "Time_Transfixed"
+    },
+    {
+      "id": 1,
+      "artist": "Rene Magritte",
+      "title": "Golconda",
+      "year": "1953",
+      "loc": "Menil Collection",
+      "lat": "29.73734",
+      "lng": "-95.39851",
+      "img": "https://uploads1.wikiart.org/images/rene-magritte/gonconda-1953(1).jpg!Large.jpg",
+      "wiki": "Golconda_(Magritte)"
+    },
+    {
+      "id": 2,
+      "artist": "Rene Magritte",
+      "title": "The empire of lights",
+      "year": "1954",
+      "loc": "Peggy Guggenheim Collection",
+      "lat": "45.43082",
+      "lng": "12.33153",
+      "img": "https://uploads6.wikiart.org/images/rene-magritte/the-empire-of-lights-1954-1(1).jpg!Large.jpg",
+      "wiki": "The_Empire_of_Light"
+    },
+    {
+      "id": 3,
+      "artist": "Rene Magritte",
+      "title": "Collective Invention",
+      "year": "1934",
+      "loc": "Kunstsammlung Nordrhein-Westfalen",
+      "lat": "51.22839",
+      "lng": "6.77598",
+      "img": "https://uploads4.wikiart.org/images/rene-magritte/collective-invention-1934(1).jpg!Large.jpg",
+      "wiki": "Collective_Invention_Magritte"
+    },
+    {
+      "id": 4,
+      "artist": "Rene Magritte",
+      "title": "The treachery of images (This is not a pipe)",
+      "year": "1928",
+      "loc": "LACMA",
+      "lat": "34.06393",
+      "lng": "-118.35922",
+      "img": "https://uploads8.wikiart.org/images/rene-magritte/the-treachery-of-images-this-is-not-a-pipe-1948(2).jpg!Large.jpg",
+      "wiki": "The_Treachery_of_Images"
+    },
+    {
+      "id": 5,
+      "artist": "Salvador Dali",
+      "title": "The Burning Giraffe",
+      "year": "1937",
+      "loc": "Kunstmuseum Basel",
+      "lat": "47.55403",
+      "lng": "7.59419",
+      "img": "https://uploads2.wikiart.org/00187/images/salvador-dali/dali2.jpg",
+      "wiki": "The_Burning_Giraffe"
+    },
+    {
+      "id": 6,
+      "artist": "Salvador Dali",
+      "title": "The Persistence of Memory",
+      "year": "1931",
+      "loc": "Museum of Modern Art (MoMA)",
+      "lat": "40.76143",
+      "lng": "-73.97762",
+      "img": "https://uploads6.wikiart.org/images/salvador-dali/the-persistence-of-memory-1931.jpg!Large.jpg",
+      "wiki": "The_Persistence_of_Memory"
+    },
+    {
+      "id": 7,
+      "artist": "Salvador Dali",
+      "title": "Soft Construction with Boiled Beans (Premonition of Civil War)",
+      "year": "1936",
+      "loc": "Philadelphia Museum of Art",
+      "lat": "39.96556",
+      "lng": "-75.18096",
+      "img": "https://uploads3.wikiart.org/images/salvador-dali/soft-construction-with-boiled-beans-premonition-of-civil-war(1).jpg!Large.jpg",
+      "wiki": "Soft_Construction_with_Boiled_Beans_(Premonition_of_Civil_War)"
+    },
+    {
+      "id": 8,
+      "artist": "Salvador Dali",
+      "title": "The Temptation of St. Anthony",
+      "year": "1946",
+      "loc": "Royal Museums of Fine Arts of Belgium",
+      "lat": "50.84197",
+      "lng": "4.35790",
+      "img": "https://uploads4.wikiart.org/images/salvador-dali/the-temptation-of-st-anthony.jpg!Large.jpg",
+      "wiki": "The_Temptation_of_St._Anthony_(Dalí)"
+    },
+    {
+      "id": 9,
+      "artist": "Salvador Dali",
+      "title": "Dream Caused by the Flight of a Bee around a Pomegranate a Second before Awakening",
+      "year": "1944",
+      "loc": "Thyssen-Bornemisza Museum",
+      "lat": "40.41604",
+      "lng": "-3.69492",
+      "img": "https://uploads6.wikiart.org/images/salvador-dali/dream-caused-by-the-flight-of-a-bee-around-a-pomegranate-one-second-before-awakening.jpg!Large.jpg",
+      "wiki": "Dream_Caused_by_the_Flight_of_a_Bee_Around_a_Pomegranate_a_Second_Before_Awakening"
+    },
+    {
+      "id": 10,
+      "artist": "Salvador Dali",
+      "title": "Portrait of Picasso",
+      "year": "1947",
+      "loc": "Dalí­ Theatre and Museum",
+      "lat": "42.26798",
+      "lng": "2.95966",
+      "img": "https://uploads4.wikiart.org/images/salvador-dali/portrait-of-picasso.jpg!Large.jpg",
+      "wiki": "Portrait_of_Picasso_Dali"
+    },
+    {
+      "id": 11,
+      "artist": "Salvador Dali",
+      "title": "About Salvador Dalí",
+      "year": "1904 - 1989",
+      "loc": "Figueres, Spain (birth)",
+      "lat": "45.12345",
+      "lng": "-30.12345",
+      "img": "https://uploads5.wikiart.org/images/salvador-dali.jpg!Portrait.jpg",
+      "wiki": "Salvador_Dalí"
+    },
+    {
+      "id": 12,
+      "artist": "René Magritte",
+      "title": "About René Magritte",
+      "year": "1898 - 1967",
+      "loc": "Lessines, Belgium (birth)",
+      "lat": "43.12345",
+      "lng": "-35.12345",
+      "img": "https://uploads5.wikiart.org/images/rene-magritte.jpg!Portrait.jpg",
+      "wiki": "René_Magritte"
+    }
+  ]
+}
