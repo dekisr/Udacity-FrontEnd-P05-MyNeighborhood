@@ -33,7 +33,7 @@ class App extends Component {
   ftFetch() {
     // const url = 'https://www.googleapis.com/fusiontables/v2/query?sql=SELECT*%20FROM%201KrfTm26-Wc2yQmIfW8YH5oUw4aeIC5eL76Yebgnc&key=AIzaSyAszEoz4HsD1TwV_9pZYzHJW3Fvd158C_M';
     const url =
-      "https://raw.githubusercontent.com/dekisr/Udacity-FrontEnd-P05-MyNeighborhood/master/assets/data.json"
+      "https://raw.githubusercontent.com/dekisr/Udacity-FrontEnd-P05-MyNeighborhood/master/src/assets/data.json"
     const jsonError = () => {
       throw new Error("Failed to fetch data.json")
     }
