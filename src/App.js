@@ -43,7 +43,6 @@ class App extends Component {
         return resp.json()
       })
       .then((data) => {
-        console.log(data)
         // Mounts the objects
         let artData = data.paintings.map((item) => {
           // Set the icon according to the artist
