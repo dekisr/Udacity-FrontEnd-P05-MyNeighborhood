@@ -51,7 +51,7 @@ class Map extends Component {
           closeIB={closeIB}
           fitMarkers={this.fitMarkers}
           isMarkerShown
-          googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=AIzaSyAszEoz4HsD1TwV_9pZYzHJW3Fvd158C_M"
+          googleMapURL={`https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=${process.env.REACT_APP_API_KEY}`}
           loadingElement={<div style={{ height: `100%` }} />}
           containerElement={<div className="mapContainer" aria-label="Container for the Map" />}
           mapElement={<div className="mapElement" role="application" aria-label="Google Maps" />}

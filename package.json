@@ -4,11 +4,11 @@
   "private": true,
   "homepage": "https://dekisr.github.io/Udacity-FrontEnd-P05-MyNeighborhood",
   "dependencies": {
-    "react": "^16.5.2",
-    "react-burger-menu": "^2.5.3",
-    "react-dom": "^16.5.2",
+    "react": "^16.13.1",
+    "react-burger-menu": "^2.6.13",
+    "react-dom": "^16.13.1",
     "react-google-maps": "^9.4.5",
-    "react-scripts": "^2.1.3"
+    "react-scripts": "^2.1.8"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -28,6 +28,6 @@
     "not op_mini all"
   ],
   "devDependencies": {
-    "gh-pages": "^2.0.1"
+    "gh-pages": "^2.2.0"
   }
 }

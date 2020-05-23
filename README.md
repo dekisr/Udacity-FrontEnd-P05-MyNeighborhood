@@ -21,8 +21,9 @@ Some tools that helped me a lot:
 ## Instructions
 You can clone or download this repository.
 ### To run dev environment:
-> npm install  
-> npm start
+> `npm install`  
+> `REACT_APP_API_KEY=YOURGOOGLEMAPSKEY npm start` (Linux, macOS - Bash)  
+> `set REACT_APP_API_KEY=YOURGOOGLEMAPSKEY && npm start` (Windows - cmd)
 ### To test build files:
 - remove the **line 5**: [```"homepage": "https://dekisr.github.io/Udacity-FrontEnd-P05-MyNeighborhood",```] from the **package.json** file  
 - npm run build  
